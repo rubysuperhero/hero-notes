@@ -5,7 +5,7 @@ require 'yaml'
 require 'active_support'
 require 'active_support/core_ext'
 
-if ENV['CLIT_ENV'] == 'test'
+if Dir['./lib/clitasks.rb'].count > 0
   require './lib/clitasks/configuration'
   require './lib/clitasks/world'
   require './lib/clitasks/simple_dsl'

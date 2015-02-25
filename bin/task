@@ -1,6 +1,10 @@
 #!/usr/bin/env ruby
 
-require 'clitasks'
+if Dir['lib/clitasks.rb'].count > 0
+  require './lib/clitasks'
+else
+  require 'clitasks'
+end
 
 command = ARGV.shift
 
