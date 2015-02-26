@@ -17,9 +17,9 @@ module CliTasks
       def create(*args)
         name = args.join ' '
         timestamp = Time.now.strftime('%Y%m%d%H%M%S')
-        filename = "./stories/index/#{timestamp}.rb"
+        filename = '%s/%s.rb' % [world.task_path, timestamp] #"./stories/index/#{timestamp}.rb"
 
-        FileUtils.mkdir_p("./stories/index")
+        FileUtils.mkdir_p(world.task_path)
         checklog("Creating '#{filename}'"){ IO.write(filename, template(name)) }
         checklog("Opening '#{filename}'"){ system(ENV['EDITOR'] || 'vim', filename) }
       end
@@ -33,21 +33,21 @@ module CliTasks
       end
 
       def stories
-        @stories ||= world.stories
+        world.stories
       end
 
       def list(*args)
         if args.any?
           Viewer.print *args
         else
-          Viewer.print 'stories/index/*'
+          Viewer.print '%s/*' % world.task_path
         end
       end
 
       private
 
       def grep(*args)
-        args.inject(['stories/index']){|files,arg|
+        args.inject([world.task_path]){|files,arg|
           #pp     "grep -ril '#{arg}' -- '#{files.join "' '"}'"
           grep = `grep -ril '#{arg}' -- '#{files.join "' '"}'`
           lines = grep.lines.map(&:chomp)

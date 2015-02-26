@@ -1,10 +1,10 @@
 module CliTasks
   class LinkBuilder
     attr_reader :world
-    def initialize(path='stories')
-      @path = path
+    def initialize
       @world = World.instance
-      Runner.run [path, 'index'].join(?/)
+      @path = @world.path
+      Runner.run @world.task_path
     end
 
     def self.all
