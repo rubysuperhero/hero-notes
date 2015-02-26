@@ -8,7 +8,7 @@ module CliTasks
     end
 
     def config
-      @config ||= YAML.load_file(@file)
+      @config ||= YAML.load_file(@file) rescue {}
     end
   end
 end
