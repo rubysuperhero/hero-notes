@@ -1,5 +1,7 @@
 
-# CliTasks
+# Hero Tasks (htasks)
+
+Formerly: CliTasks
 
 CliTasks is a Command-Line Task/Project Manager
 
