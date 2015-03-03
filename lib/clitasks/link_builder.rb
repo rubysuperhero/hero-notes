@@ -14,6 +14,7 @@ module CliTasks
         links.by_status
         links.by_creator
         links.by_assignment
+        links.by_restriction
       end
     end
 
@@ -49,6 +50,12 @@ module CliTasks
         Array(story.created_by).each do |creator|
           create_link('created_by', creator, story)
         end
+      end
+    end
+
+    def by_restriction
+      world.stories.each do |story|
+        create_link('restricted_to', days, story)
       end
     end
 

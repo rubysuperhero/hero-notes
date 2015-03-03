@@ -64,12 +64,18 @@ module CliTasks
         data = <<-STORY
           story %q(#{name}) do
             status queued
+            #restricted_to weekdays
+            #restricted_to weekends
+
+            tags 'comma,delimited,tags'
+
             points 1
             created_by '#{world.configuration.created_by || 'unassigned'}'
             assigned_to :unassigned
-            tags *%w() # *%w(example example_two)
 
-            description %q()
+            description <<-"__TASK_DESCRIPTION__"
+
+            __TASK_DESCRIPTION__
           end
         STORY
         pattern = data.scan(/\A(\s+)/).uniq.min_by{|s| s.length }.first

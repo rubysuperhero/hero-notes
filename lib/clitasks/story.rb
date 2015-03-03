@@ -1,7 +1,7 @@
 module CliTasks
   class Story
     attr_accessor :file
-    attr_reader :id, :status, :points, :name, :description
+    attr_reader :id, :status, :points, :name, :description, :restricted_to
     def initialize(builder)
       builder.instance_variables.each{|name|
         instance_variable_set name, builder.instance_variable_get(name)
