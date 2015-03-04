@@ -1,6 +1,6 @@
 class StoryReader < SimpleDSL
   def initialize(name, &block)
-    @name = name
+    @name = name.split(/\s*\n+\s*/).join(' ')
     instance_eval &block
   end
 
@@ -14,7 +14,8 @@ class StoryReader < SimpleDSL
   # groups :tags
   custom :tags do |*args|
     args.flat_map do |tags|
-      tags.to_s.split(/(?<!\\),/).map(&:strip)
+      @tags ||= []
+      @tags += tags.to_s.split(/(?<!\\),/).map(&:strip)
     end
   end
 

@@ -1,19 +1,35 @@
 #!/usr/bin/env ruby
 
-if Dir['lib/clitasks.rb'].count > 0
+require 'awesome_print'
+
+command = ARGV.shift
+
+if command[/--?e(d(i(t)?)?)?/]
+  task_bin = File.realpath(__FILE__)
+  task_bin_dir = File.dirname(task_bin)
+  git_dir = `cd #{task_bin_dir}; git rev-parse --show-toplevel`.chomp
+  files = []
+  if ARGV.count > 0
+    ARGV.flat_map do |arg|
+      files += Dir["#{git_dir}/{bin,lib}/**/*.rb"].grep Regexp.new(git_dir + '.*' + arg.scan(/./).join('.*'))
+    end
+  end
+  system('vim -O %s %s/../lib/clitasks.rb %s' % [task_bin, task_bin_dir, files.uniq.join(' ')])
+  exit 0
+end
+
+if Dir['lib/clitasks.rb'].count > 0 && (Dir['.git'].count > 0 || ENV['CLIT_ENV'] == 'test')
   require './lib/clitasks'
 else
   require 'clitasks'
 end
-
-command = ARGV.shift
 
 case command
 when 'version'
   puts CliTasks::VERSION
 when 'rebuild'
   CliTasks::Commands.rebuild
-when 'create'
+when 'create', 'new', 'add', 'c', 'n', 'a'
   CliTasks::Commands.create *ARGV
   CliTasks::Commands.rebuild
 when 'edit'
