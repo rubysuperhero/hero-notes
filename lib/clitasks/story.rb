@@ -13,7 +13,9 @@ module CliTasks
     end
 
     def tags
+      return @tags if @tags != nil
       @tags ||= []
+      @tags = @tags.sort
     end
 
     def comments

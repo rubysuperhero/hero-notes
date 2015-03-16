@@ -45,7 +45,7 @@ module CliTasks
       id_col = wrap_in_column(s.id, 20)
       points_col = wrap_in_column(?* * s.points.to_i, 6)
       name_col = wrap_in_column(s.name, 60)
-      tags_col = wrap_in_column(s.tags * ', ', 30)
+      tags_col = wrap_in_column(s.tags.sort * "\n", 30)
 
       total = total_lines(status_col, id_col, points_col, name_col, tags_col)
 
