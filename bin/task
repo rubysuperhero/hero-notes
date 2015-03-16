@@ -2,6 +2,17 @@
 
 require 'awesome_print'
 
+class String
+  def split_unescaped(str, opts={}, &block)
+    self.split(/(?<!\\)#{str}/).map do |s|
+      s = s.gsub(/\\(?=#{str})/, '')
+      s = s.sub(/^\s*/,'').sub(/\s*$/,'') if opts[:trim] == true
+      s = yield s if block_given?
+      s
+    end
+  end
+end
+
 command = ARGV.shift
 
 if command[/--?e(d(i(t)?)?)?/]
@@ -29,6 +40,9 @@ when 'version'
   puts CliTasks::VERSION
 when 'rebuild'
   CliTasks::Commands.rebuild
+when 'multi', 'many', 'mcreate'
+  CliTasks::Commands.mcreate *ARGV
+  CliTasks::Commands.rebuild
 when 'create', 'new', 'add', 'c', 'n', 'a'
   CliTasks::Commands.create *ARGV
   CliTasks::Commands.rebuild
@@ -42,6 +56,18 @@ when 'search'
     CliTasks::Commands.search *ARGV
   end
   CliTasks::Commands.rebuild
+when 'import'
+  if ARGV.any?
+    tasks = IO.read(ARGV[0]).split(/\s*\n+\s*/)
+    CliTasks::Commands.mcreate *tasks
+    CliTasks::Commands.rebuild
+  else
+    f = Tempfile.new('tasks')
+    system ENV['EDITOR'] || 'vim', f.path
+    tasks = IO.read(f.path).split(/\s*\n+\s*/)
+    CliTasks::Commands.mcreate *tasks
+    CliTasks::Commands.rebuild
+  end
 when 'start'
 when 'finish'
 when 'tag'
@@ -52,3 +78,4 @@ else
   CliTasks::Commands.list *ARGV.unshift(command)
 end
 
+# vim: ft=ruby

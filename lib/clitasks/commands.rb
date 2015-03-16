@@ -2,7 +2,10 @@ module CliTasks
   class Commands
     class << self
       def edit(*args)
-        files = grep(*args)
+        edit_files grep(*args)
+      end
+
+      def edit_files(*files)
         system(ENV['EDITOR'] || 'vim', *files)
       end
 
@@ -14,14 +17,32 @@ module CliTasks
         end
       end
 
+      def next_filename
+        timestamp = Time.now.strftime('%Y%m%d%H%M%S').to_i
+        runs = 0
+        begin
+          filename = '%s/%s.rb' % [world.task_path, timestamp] #"./stories/index/#{timestamp + (runs += 1)}.rb"
+        end while File.exist?(filename) == true
+      end
+
+      def write(file, taskname='TASK NAME GOES HERE')
+        FileUtils.mkdir_p(world.task_path)
+        checklog("Creating '#{file}'"){ IO.write(file, template(taskname)) }
+        file
+      end
+
+      def mcreate(*tasks)
+        edit_files *(tasks.flat_map do|taskname|
+          next_filename.tap do |fn|
+            write fn, taskname
+          end
+        end)
+      end
+
       def create(*args)
         name = args.join ' '
-        timestamp = Time.now.strftime('%Y%m%d%H%M%S')
-        filename = '%s/%s.rb' % [world.task_path, timestamp] #"./stories/index/#{timestamp}.rb"
-
-        FileUtils.mkdir_p(world.task_path)
-        checklog("Creating '#{filename}'"){ IO.write(filename, template(name)) }
-        checklog("Opening '#{filename}'"){ system(ENV['EDITOR'] || 'vim', filename) }
+        names = split_unescaped(name, ?;, trim: true)
+        mcreate *names
       end
 
       def rebuild
@@ -60,17 +81,18 @@ module CliTasks
         puts 'done'
       end
 
-      def template(name)
+      def template(name='CHANGEME', tags=nil)
+        tags ||= named_tags name
         data = <<-STORY
           story %q(#{name}) do
             status queued
             #restricted_to weekdays
             #restricted_to weekends
 
-            tags 'comma,delimited,tags'
+            tags '#{tags * ', '}'
 
             points 1
-            created_by '#{world.configuration.created_by || 'unassigned'}'
+            created_by 'unassigned'
             assigned_to :unassigned
 
             description <<-"__TASK_DESCRIPTION__"
@@ -80,6 +102,16 @@ module CliTasks
         STORY
         pattern = data.scan(/\A(\s+)/).uniq.min_by{|s| s.length }.first
         data.gsub(/^#{pattern}/, '')
+      end
+
+
+      def split_unescaped(text, str, opts={}) # &block too
+        text.split(/(?<!\\)#{str}/).map do |s|
+          s = s.gsub(/\\(?=#{str})/, '')
+          s = s.sub(/^\s*/,'').sub(/\s*$/,'') if opts[:trim] == true
+          s = yield s if block_given?
+          s
+        end
       end
     end
   end
