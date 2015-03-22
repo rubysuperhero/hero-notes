@@ -38,6 +38,9 @@ end
 case command
 when 'version'
   puts CliTasks::VERSION
+when 'index'
+  CliTasks::Commands.rebuild
+  CliTasks::Commands.index
 when 'rebuild'
   CliTasks::Commands.rebuild
 when 'multi', 'many', 'mcreate'

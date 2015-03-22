@@ -26,7 +26,7 @@ module CliTasks
     end
 
     def create_link(type, dir, story)
-      dir = sanitize(dir) || return
+      dir = sanitize(dir.to_s.dup) || return
       dest = File.join(@path, type, dir)
       link story, dest
     end
@@ -76,14 +76,15 @@ module CliTasks
 
     def sanitize(name)
       return unless name.is_a?(String) || name.is_a?(Symbol)
-      String(name).gsub(/(\W|_|[^\/])+/, '_').sub(/^_*/, '').sub(/_*$/, '')
+      String(name.to_s.dup).gsub(/(\W|_)+/, '_').sub(/^_*/, '').sub(/_*$/, '')
     end
 
     def link(story, dest)
       FileUtils.mkdir_p File.expand_path(dest)
       src = Pathname.new(File.expand_path(story.file))
-      return false if File.exist?(File.join(dest, sanitize(story.name)))
-      FileUtils.ln_s src.relative_path_from(Pathname.new(File.expand_path(dest))), File.join(dest, sanitize(story.name))
+
+      return false if File.exist?(File.join(dest, sanitize(story.name.to_s.dup)))
+      FileUtils.ln_s src.relative_path_from(Pathname.new(File.expand_path(dest))), File.join(dest, sanitize(story.name.to_s.dup))
     end
   end
 end

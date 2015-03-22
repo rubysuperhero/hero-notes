@@ -17,12 +17,9 @@ module CliTasks
         end
       end
 
-      def next_filename
-        timestamp = Time.now.strftime('%Y%m%d%H%M%S').to_i
-        runs = 0
-        begin
-          filename = '%s/%s.rb' % [world.task_path, timestamp] #"./stories/index/#{timestamp + (runs += 1)}.rb"
-        end while File.exist?(filename) == true
+      def next_filename(runs=0)
+        filename = '%s/%s.rb' % [world.task_path, Time.now.to_i]
+        File.exist?(filename) ? next_filename(runs + 1) : filename
       end
 
       def write(file, taskname='TASK NAME GOES HERE')
@@ -43,6 +40,15 @@ module CliTasks
         name = args.join ' '
         names = split_unescaped(name, ?;, trim: true)
         mcreate *names
+      rescue => e
+        binding.pry
+        puts 'some kind of exception happened'
+      end
+
+      def index
+        file = File.join(world.path, 'all_tasks')
+        %x{ find #{world.path} | sed 's/^#{world.path.gsub(/./, ?.)}//' | egrep -v '[.]tasks|/all/'  >#{file} }
+        system("vim", file)
       end
 
       def rebuild
@@ -79,6 +85,10 @@ module CliTasks
         print "#{msg}..."
         block.call
         puts 'done'
+      end
+
+      def named_tags(name='')
+        name.scan(/(?<=\s[#])\S\S*/).flatten
       end
 
       def template(name='CHANGEME', tags=nil)

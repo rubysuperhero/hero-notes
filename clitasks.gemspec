@@ -20,4 +20,5 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'activesupport', ['~> 4.0']
   s.add_development_dependency 'rake', ['~> 10.3']
   s.add_development_dependency 'minitest', ['~> 5.3']
+  s.add_development_dependency 'pry', ['~> 0.10']
 end

@@ -1,4 +1,5 @@
 require 'fileutils'
+require 'pry'
 require 'pathname'
 require 'singleton'
 require 'yaml'
