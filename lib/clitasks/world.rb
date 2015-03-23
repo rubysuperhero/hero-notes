@@ -23,7 +23,7 @@ module CliTasks
     end
 
     def task_path
-      '%s/.tasks' % path
+      '%s/.index' % path
     end
 
     def path
