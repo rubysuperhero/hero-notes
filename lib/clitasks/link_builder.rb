@@ -11,6 +11,8 @@ module CliTasks
       LinkBuilder.new.tap do |links|
         links.remove_all_symlinks
         links.by_tag
+        links.by_metadata
+        links.to_all
         # links.by_status
         # links.by_creator
         # links.by_assignment
@@ -26,15 +28,32 @@ module CliTasks
     end
 
     def create_link(type, dir, story)
+      type = sanitize(type.dup) if type
       dir = sanitize(dir.to_s.dup) || return
-      dest = File.join(@path, type, dir)
+      dir = File.join(type, dir) if type
+      dest = File.join(@path, dir)
       link story, dest
+    end
+
+    def by_metadata
+      world.stories.each do |story|
+        story.metadata.each do |k,v|
+          create_link(k, v, story)
+          #create_link('all', metadata, story)
+        end
+      end
+    end
+
+    def to_all
+      world.stories.each do |story|
+        create_link(nil, 'all', story)
+      end
     end
 
     def by_tag
       world.stories.each do |story|
         story.tags.each do |tag|
-          create_link('tags', tag, story)
+          create_link(nil, tag, story)
           create_link('all', tag, story)
         end
       end
