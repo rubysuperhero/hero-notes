@@ -2,6 +2,12 @@
 
 require 'awesome_print'
 
+if Dir['lib/clitasks.rb'].count > 0 && (Dir['.git'].count > 0 || ENV['CLIT_ENV'] == 'test')
+  require './lib/clitasks'
+else
+  require 'clitasks'
+end
+
 class String
   def split_unescaped(str, opts={}, &block)
     self.split(/(?<!\\)#{str}/).map do |s|
@@ -13,56 +19,85 @@ class String
   end
 end
 
-command = ARGV.shift
+module Hero
 
-if command[/--?e(d(i(t)?)?)?/]
-  task_bin = File.realpath(__FILE__)
-  task_bin_dir = File.dirname(task_bin)
-  git_dir = `cd #{task_bin_dir}; git rev-parse --show-toplevel`.chomp
-  files = []
-  if ARGV.count > 0
-    ARGV.flat_map do |arg|
-      files += Dir["#{git_dir}/{bin,lib}/**/*.rb"].grep Regexp.new(git_dir + '.*' + arg.scan(/./).join('.*'))
+  class NoteCommand
+    attr_accessor :original_args, :args, :stdin, :io
+    attr_accessor :subcommand
+
+    def self.run(args=ARGV.clone, io=$stdin)
+      new(args, io).process_subcommand
     end
-  end
-  system('vim -O %s %s/../lib/clitasks.rb %s' % [task_bin, task_bin_dir, files.uniq.join(' ')])
-  exit 0
-end
 
-if Dir['lib/clitasks.rb'].count > 0 && (Dir['.git'].count > 0 || ENV['CLIT_ENV'] == 'test')
-  require './lib/clitasks'
-else
-  require 'clitasks'
-end
+    def initialize(args=ARGV.clone, io=$stdin)
+      @original_args = args.clone
+      @args = args
+      @io = io
 
-case command
-when 'index'
-  CliTasks::Commands.rebuild
-  CliTasks::Commands.index
-  CliTasks::Commands.rebuild
-when 'save', 's'
-  CliTasks::Commands.save ARGV, $stdin
-  CliTasks::Commands.rebuild
-when 'add', 'a', 'new', 'n', 'create', 'c', 'import', 'i'
-  CliTasks::Commands.create ARGV, $stdin
-  CliTasks::Commands.rebuild
-when 'rebuild'
-  CliTasks::Commands.rebuild
-when 'edit'
-  CliTasks::Commands.edit *ARGV
-  CliTasks::Commands.rebuild
-when 'search'
-  if ARGV.any?{|arg| arg == '-e' }
-    CliTasks::Commands.edit *ARGV.reject{|arg| arg == '-e' }
-  else
-    CliTasks::Commands.search *ARGV
+      @subcommand = @args.shift || 'list'
+    end
+
+    def stdin
+      io
+    end
+
+    def command
+      subcommand
+    end
+
+    def process_subcommand
+      case command
+      when /--?e(d(i(t)?)?)?/
+        task_bin = File.realpath(__FILE__)
+        task_bin_dir = File.dirname(task_bin)
+        git_dir = `cd #{task_bin_dir}; git rev-parse --show-toplevel`.chomp
+        Dir.chdir(git_dir)
+        files = []
+        if ARGV.count > 0
+          ARGV.flat_map do |arg|
+            files += Dir["{bin,lib}/**/*.rb"].grep Regexp.new('.*' + arg.scan(/./).join('.*'))
+          end
+        end
+        tempfile = Tempfile.new('note-project')
+        %x{find bin lib -type f >#{tempfile.path}}
+        system('vim -O "%s" "bin/%s"' % [tempfile.path, File.basename(task_bin)])   #, task_bin_dir, files.uniq.join(' ')])
+        tempfile.close
+        tempfile.unlink
+        exit 0
+      when 'index'
+        CliTasks::Commands.rebuild
+        CliTasks::Commands.index
+        CliTasks::Commands.rebuild
+      when 'save', 's'
+        CliTasks::Commands.save ARGV, $stdin
+        CliTasks::Commands.rebuild
+      when 'add', 'a', 'new', 'n', 'create', 'c', 'import', 'i'
+        CliTasks::Commands.create ARGV, $stdin
+        CliTasks::Commands.rebuild
+      when 'rebuild'
+        CliTasks::Commands.rebuild
+      when 'edit'
+        CliTasks::Commands.edit *ARGV
+        CliTasks::Commands.rebuild
+      when 'search'
+        if ARGV.any?{|arg| arg == '-e' }
+          CliTasks::Commands.edit *ARGV.reject{|arg| arg == '-e' }
+        else
+          CliTasks::Commands.search *ARGV
+        end
+        CliTasks::Commands.rebuild
+      when 'list'
+        CliTasks::Commands.list *ARGV
+      else
+        CliTasks::Commands.list *ARGV.unshift(command)
+      end
+    end
+
   end
-  CliTasks::Commands.rebuild
-when 'list'
-  CliTasks::Commands.list *ARGV
-else
-  CliTasks::Commands.list *ARGV.unshift(command)
 end
+# command = ARGV.shift || 'list'
+
+Hero::NoteCommand.run
 
 # case command
 # when 'version'
