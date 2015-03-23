@@ -17,9 +17,9 @@ module CliTasks
         end
       end
 
-      def next_filename(runs=0)
-        filename = '%s/%s.rb' % [world.task_path, Time.now.to_i]
-        File.exist?(filename) ? next_filename(runs + 1) : filename
+      def next_filename(counter=0)
+        filename = '%s/%s%02d.rb' % [world.task_path, Time.now.to_i, counter]
+        File.exist?(filename) ? next_filename(counter + 1) : filename
       end
 
       def write(file, taskname='TASK NAME GOES HERE')
@@ -29,21 +29,45 @@ module CliTasks
       end
 
       def mcreate(*tasks)
-        edit_files *(tasks.flat_map do|taskname|
+        edit_files *(tasks.flat_map do|task|
           next_filename.tap do |fn|
-            write fn, taskname
+            write fn, task.data
           end
         end)
       end
 
-      def create(*args)
-        name = args.join ' '
-        names = split_unescaped(name, ?;, trim: true)
-        mcreate *names
-      rescue => e
-        binding.pry
-        puts 'some kind of exception happened'
+      def create(args=ARGV, stdin=$stdin)
+        files = save_to_disk collect(args, stdin)
+        edit_files *files
       end
+
+      def save(args=ARGV, stdin=$stdin)
+        files = save_to_disk collect(args, stdin)
+      end
+
+      def save_to_disk(tasks)
+        tasks.flat_map do|task|
+          next_filename.tap do |fn|
+            write fn, task.data
+          end
+        end
+      end
+
+      def collect(args=ARGV, stdin=$stdin)
+        notes = args.map(&Note.method(:from_file))
+        notes << Note.from_stdin(stdin)
+        notes = [Note.from_string('')] if notes.compact.none?
+        notes.compact
+      end
+
+#       def create(*args)
+#         name = args.join ' '
+#         names = split_unescaped(name, ?;, trim: true)
+#         mcreate *names
+#       rescue => e
+#         binding.pry
+#         puts 'some kind of exception happened'
+#       end
 
       def index
         file = File.join(world.path, 'all_tasks')
