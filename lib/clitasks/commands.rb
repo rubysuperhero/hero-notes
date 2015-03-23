@@ -22,9 +22,9 @@ module CliTasks
         File.exist?(filename) ? next_filename(counter + 1) : filename
       end
 
-      def write(file, taskname='TASK NAME GOES HERE')
+      def write(file, data='')
         FileUtils.mkdir_p(world.task_path)
-        checklog("Creating '#{file}'"){ IO.write(file, template(taskname)) }
+        checklog("Creating '#{file}'"){ IO.write(file, data) }
         file
       end
 

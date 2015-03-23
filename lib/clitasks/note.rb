@@ -1,6 +1,6 @@
 module CliTasks
   class Note
-    attr_accessor :data, :lines
+    attr_accessor :data, :lines, :file
     attr_accessor :metadata, :name, :tags
 
     class << self

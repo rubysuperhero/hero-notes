@@ -11,10 +11,10 @@ module CliTasks
       LinkBuilder.new.tap do |links|
         links.remove_all_symlinks
         links.by_tag
-        links.by_status
-        links.by_creator
-        links.by_assignment
-        links.by_restriction
+        # links.by_status
+        # links.by_creator
+        # links.by_assignment
+        # links.by_restriction
       end
     end
 
