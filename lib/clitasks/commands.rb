@@ -1,7 +1,7 @@
 module CliTasks
   class Commands
     class << self
-      def commit(message)
+      def commit(message='auto-saving notes')
         puts `git add --all; git commit -m '#{message} @ #{Time.now.strftime('%Y-%m-%d %H:%M:%S %Z')}'`
       end
 
