@@ -31,10 +31,10 @@ module Hero
 
     def initialize(args=ARGV.clone, io=$stdin)
       @original_args = args.clone
+      @subcommand = args.shift || 'list'
+
       @args = args
       @io = io
-
-      @subcommand = @args.shift || 'list'
     end
 
     def stdin
@@ -53,8 +53,8 @@ module Hero
         git_dir = `cd #{task_bin_dir}; git rev-parse --show-toplevel`.chomp
         Dir.chdir(git_dir)
         files = []
-        if ARGV.count > 0
-          ARGV.flat_map do |arg|
+        if args.count > 0
+          args.flat_map do |arg|
             files += Dir["{bin,lib}/**/*.rb"].grep Regexp.new('.*' + arg.scan(/./).join('.*'))
           end
         end
@@ -69,27 +69,27 @@ module Hero
         CliTasks::Commands.index
         CliTasks::Commands.rebuild
       when 'save', 's'
-        CliTasks::Commands.save ARGV, $stdin
+        CliTasks::Commands.save args, $stdin
         CliTasks::Commands.rebuild
       when 'add', 'a', 'new', 'n', 'create', 'c', 'import', 'i'
-        CliTasks::Commands.create ARGV, $stdin
+        CliTasks::Commands.create args, $stdin
         CliTasks::Commands.rebuild
       when 'rebuild'
         CliTasks::Commands.rebuild
       when 'edit'
-        CliTasks::Commands.edit *ARGV
+        CliTasks::Commands.edit *args
         CliTasks::Commands.rebuild
       when 'search'
-        if ARGV.any?{|arg| arg == '-e' }
-          CliTasks::Commands.edit *ARGV.reject{|arg| arg == '-e' }
+        if args.any?{|arg| arg == '-e' }
+          CliTasks::Commands.edit *args.reject{|arg| arg == '-e' }
         else
-          CliTasks::Commands.search *ARGV
+          CliTasks::Commands.search *args
         end
         CliTasks::Commands.rebuild
       when 'list'
-        CliTasks::Commands.list *ARGV
+        CliTasks::Commands.list *args
       else
-        CliTasks::Commands.list *ARGV.unshift(command)
+        CliTasks::Commands.list *original_args
       end
     end
 
