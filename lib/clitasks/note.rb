@@ -25,15 +25,19 @@ module CliTasks
 
     def initialize(data='')
       @data = data
-      @lines = @data.split(/\n/)
+      @lines = @data.split(/\s*\n/)
 
       extract_tags
       extract_metadata
       extract_name
     end
 
+    def id
+      @id ||= File.basename(file, '.rb')
+    end
+
     def extract_tags
-      @tags ||= data.scan(/(?<=(?<!\S)#)\w[\w\\]+/) # should match 'nothis #this #also/this/too'
+      @tags ||= data.scan(/(?<=(?<!\S)#)\w[\w\\]+/).sort # should match 'nothis #this #also/this/too'
     end
 
     def extract_metadata

@@ -6,7 +6,7 @@ module CliTasks
       end
 
       def edit_files(*files)
-        system(ENV['EDITOR'] || 'vim', *files)
+        system(ENV['EDITOR'] || 'vim', *(files.flatten))
       end
 
       def search(*args)

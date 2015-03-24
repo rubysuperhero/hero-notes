@@ -14,17 +14,19 @@ module CliTasks
     end
 
     def print
-      puts header
+      puts screen
+    end
 
-      puts stories.reverse.inject({}){|hash,s|
-        hash.merge( s.status => hash.fetch(s.status, []) << s )
-      }.map{|status,group|
-        [separator] + group.flat_map{|s| story(s) }
+    def screen
+      lines = [header]
+      lines += stories.reverse.map{|s|
+        story(s)
       }
+      lines.join(separator)
     end
 
     def header
-      sprintf(" %-10s | %-20s | %-6s | %-60s | %-s", :status, :id, :points, :name, :tags)
+      sprintf(" %-20s | %-60s | %-s\n", :id, :name, :tags)
     end
 
     def wrap_in_column(str='',width=10)
@@ -36,26 +38,23 @@ module CliTasks
     end
 
     def separator
-      sprintf(" %-10s | %-20s | %-6s | %-60s | %-s", ?-*10, ?-*20, ?-*6, ?-*60, ?-*30)
+      sprintf(" %-20s | %-60s | %-s\n", ?-*20, ?-*60, ?-*30)
     end
 
     def story(s)
       # make a method for each of the _col methods
-      status_col = wrap_in_column(s.status, 10)
+      #status_col = wrap_in_column(s.status, 10)
       id_col = wrap_in_column(s.id, 20)
-      points_col = wrap_in_column(?* * s.points.to_i, 6)
+      #points_col = wrap_in_column(?* * s.points.to_i, 6)
       name_col = wrap_in_column(s.name, 60)
       tags_col = wrap_in_column(s.tags.sort * "\n", 30)
 
-      total = total_lines(status_col, id_col, points_col, name_col, tags_col)
+      #total = total_lines(status_col, id_col, points_col, name_col, tags_col)
+      total = total_lines(id_col, name_col, tags_col)
 
-      lines = Array.new(total).map{ " %-10s | %-20s | %-6s | %-60s | %-30s" }
+      lines = Array.new(total).map{ " %-20s | %-60s | %-30s\n" }
 
-      output = lines.zip(status_col, id_col, points_col, name_col, tags_col).map{|r| sprintf(*r) } << format("%s\n",separator)
-
-      return output.join("\n")
-
-      sprintf(" %-10s | %-20s | %-6s | %-60s | %-s", s.status, s.id, ?* * s.points.to_i, s.name.slice(0,60), Array(s.tags).join(', '))
+      lines.zip(id_col, name_col, tags_col).map{|r| sprintf(*r) }.join
     end
 
     def stories
