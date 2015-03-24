@@ -29,7 +29,7 @@ module CliTasks
 
     def initialize(data='')
       @data = data
-      @lines = @data.split(/\s*\n/)
+      @lines = @data.lines.map(&:chomp)
 
       extract_tags
       extract_metadata
