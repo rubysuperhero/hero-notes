@@ -99,7 +99,7 @@ module CliTasks
         if args.any?
           Viewer.print *args
         else
-          Viewer.print '%s/*' % world.task_path
+          Viewer.print '%s' % world.task_path
         end
       end
 

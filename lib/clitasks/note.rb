@@ -14,7 +14,11 @@ module CliTasks
       end
 
       def from_file(name)
-        File.exist?(name) ? from_string(IO.read(name)) : from_string(name)
+        if File.exist?(name)
+          from_string(IO.read(name)) unless File.directory?(name)
+        else
+          from_string(name)
+        end
       end
 
       def from_stdin(io)
