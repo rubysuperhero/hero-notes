@@ -63,7 +63,8 @@ module Hero
         system('vim -O "%s" "bin/%s"' % [tempfile.path, File.basename(task_bin)])   #, task_bin_dir, files.uniq.join(' ')])
         tempfile.close
         tempfile.unlink
-        exit 0
+        CliTasks::Commands.commit('auto-saving bin/note')
+        return 0
       when 'index'
         CliTasks::Commands.rebuild
         CliTasks::Commands.index
@@ -87,7 +88,8 @@ module Hero
         end
         CliTasks::Commands.rebuild
       when 'commit'
-        return CliTasks::Commands.commit
+        CliTasks::Commands.commit
+        return
       when 'test'
         return CliTasks::Commands.test args, $stdin
       when 'list'
