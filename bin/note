@@ -86,11 +86,14 @@ module Hero
           CliTasks::Commands.search *args
         end
         CliTasks::Commands.rebuild
+      when 'commit'
+        return CliTasks::Commands.commit
       when 'list'
         CliTasks::Commands.list *args
       else
         CliTasks::Commands.list *original_args
       end
+      CliTasks::Commands.commit
     end
 
   end

@@ -51,7 +51,11 @@ module CliTasks
     end
 
     def extract_name
-      @name ||= extract_body.first[/^\s*(.{0,79}(?!\S))/]
+      @name ||= extract_body.first
+    end
+
+    def short_name
+      extract_name[/^\s*(.{0,79}(?!\S))/]
     end
 
     def extract_body
