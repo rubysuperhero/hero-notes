@@ -42,9 +42,9 @@ module CliTasks
 
     def extract_metadata
       @metadata ||= lines.take_while do |line|
-        line[/^[\w\s]+:\s*\w|^\s*$/]
+        line[/^\w+:\s*\w|^\s*$/]
       end.inject({}) do |h,line|
-        md = line.match(/^([\w\s]+)\s*:\s*(\w.*)$/)
+        md = line.match(/^(\w+)\s*:\s*(\w.*)$/)
         md &&= Hash[md[1], md[2]]
         h.merge md || {}
       end
