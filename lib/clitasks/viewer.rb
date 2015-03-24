@@ -52,7 +52,7 @@ module CliTasks
       #total = total_lines(status_col, id_col, points_col, name_col, tags_col)
       total = total_lines(id_col, name_col, tags_col)
 
-      lines = Array.new(total).map{ " %-20s | %-60s | %-30s\n" }
+      lines = Array.new(total).map{ " %-20s | %-60s | %-s\n" }
 
       lines.zip(id_col, name_col, tags_col).map{|r| sprintf(*r) }.join
     end
