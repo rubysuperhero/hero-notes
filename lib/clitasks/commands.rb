@@ -57,6 +57,10 @@ module CliTasks
         end
       end
 
+      def test(args=ARGV, stdin=$stdin)
+        puts collect(args, stdin).ai(raw: true)
+      end
+
       def collect(args=ARGV, stdin=$stdin)
         notes = args.map(&Note.method(:from_file))
         notes << Note.from_stdin(stdin)

@@ -88,6 +88,8 @@ module Hero
         CliTasks::Commands.rebuild
       when 'commit'
         return CliTasks::Commands.commit
+      when 'test'
+        return CliTasks::Commands.test args, $stdin
       when 'list'
         CliTasks::Commands.list *args
       else
