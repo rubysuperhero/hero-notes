@@ -102,8 +102,8 @@ module CliTasks
       FileUtils.mkdir_p File.expand_path(dest)
       src = Pathname.new(File.expand_path(story.file))
 
-      return false if File.exist?(File.join(dest, sanitize(story.name.to_s.dup)))
-      FileUtils.ln_s src.relative_path_from(Pathname.new(File.expand_path(dest))), File.join(dest, sanitize(story.name.to_s.dup))
+      return false if File.exist?(File.join(dest, sanitize(story.short_name.to_s.dup)))
+      FileUtils.ln_s src.relative_path_from(Pathname.new(File.expand_path(dest))), File.join(dest, sanitize(story.short_name.to_s.dup))
     end
   end
 end
