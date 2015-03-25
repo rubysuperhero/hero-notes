@@ -5,7 +5,13 @@ module CliTasks
       files.flat_map{|file|
         Dir[File.directory?(file) && [file,'/*.rb'].join || file]
       }.map{|file|
-        note = Note.from_file(file)
+        begin
+          note = Note.from_file(file)
+        rescue => e
+          ap file: file
+          binding.pry
+          ap file: file
+        end
         note_status = note.metadata['status']
         hide_note = false
         if note_status

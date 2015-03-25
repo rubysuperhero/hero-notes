@@ -9,13 +9,13 @@ module CliTasks
         notes.map &Note.method(:new)
       end
 
-      def from_string(data)
-        Note.new data
+      def from_string(data, name=nil)
+        Note.new data, name
       end
 
       def from_file(name)
         if File.exist?(name)
-          from_string(IO.read(name)) unless File.directory?(name)
+          from_string(IO.read(name), name) unless File.directory?(name)
         else
           from_string(name)
         end
@@ -27,8 +27,9 @@ module CliTasks
       end
     end
 
-    def initialize(data='')
+    def initialize(data='', file=nil)
       @data = data
+      @file = file
       @lines = @data.lines.map(&:chomp)
 
       extract_tags
@@ -60,6 +61,10 @@ module CliTasks
 
     def short_name
       extract_name[/^\s*(.{0,79}(?!\S))/]
+    rescue => e
+      ap file: file
+      binding.pry
+      ap file: file
     end
 
     def extract_body
