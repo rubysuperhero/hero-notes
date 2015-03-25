@@ -28,7 +28,7 @@ module CliTasks
 
       def write(file, data='')
         FileUtils.mkdir_p(world.task_path)
-        checklog("Creating '#{file}'"){ IO.write(file, data) }
+        checklog("Creating '#{file}'"){ File.new(file, 'w').tap{|f| f.write(data) }.close }
         file
       end
 
