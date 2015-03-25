@@ -77,9 +77,29 @@ module CliTasks
 #         puts 'some kind of exception happened'
 #       end
 
+
+      def index_glob(dir='')
+        pattern = dir.sub(/\/+$/, ?/) + ?*
+        files = []
+        dirs = []
+        Dir[pattern].each do |f|
+          next if File.basename(f)[/^[.]/]
+          if File.directory?(f)
+            f = f.sub(/\/*$/, ?/)
+            dirs += ['', f] + index_glob(f)
+          else
+            files << f
+          end
+        end
+        files + dirs
+      end
+
       def index
-        file = File.join(world.path, 'all_tasks')
-        %x{ find #{world.path} | sed 's/^#{world.path.gsub(/./, ?.)}//' | egrep -v '[.]tasks|/all/'  >#{file} }
+        original_dir = Dir.pwd
+        Dir.chdir(world.path)
+        file = 'all_tasks'
+        list = index_glob
+        IO.write(file, list.join("\n"))
         system("vim", file)
       end
 
