@@ -99,7 +99,7 @@ module CliTasks
         Dir.chdir(world.path)
         file = 'file-index.textile'
         list = index_glob
-        IO.write(file, list.unshift(Dir.pwd, '').join("\n").gsub(/^/, '> '))
+        IO.write(file, list.unshift(Dir.pwd, '').join("\n").gsub(/^/, 'bq. '))
         system("vim", file)
       end
 
