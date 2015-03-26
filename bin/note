@@ -45,26 +45,36 @@ module Hero
       subcommand
     end
 
-    def process_subcommand
-      case command
-      when /--?e(d(i(t)?)?)?/
-        task_bin = File.realpath(__FILE__)
-        task_bin_dir = File.dirname(task_bin)
-        git_dir = `cd #{task_bin_dir}; git rev-parse --show-toplevel`.chomp
-        Dir.chdir(git_dir)
-        files = []
-        if args.count > 0
-          args.flat_map do |arg|
-            files += Dir["{bin,lib}/**/*.rb"].grep Regexp.new('.*' + arg.scan(/./).join('.*'))
-          end
+    def is_edit_bin_subcommand?
+      command[/--?e(d(i(t)?)?)?/] ? true : false
+    end
+
+    def edit_bin(args)
+      task_bin = File.realpath(__FILE__)
+      task_bin_dir = File.dirname(task_bin)
+      git_dir = `cd #{task_bin_dir}; git rev-parse --show-toplevel`.chomp
+      Dir.chdir(git_dir)
+      files = []
+      if args.count > 0
+        args.flat_map do |arg|
+          files += Dir["{bin,lib}/**/*.rb"].grep Regexp.new('.*' + arg.scan(/./).join('.*'))
         end
-        tempfile = Tempfile.new('note-project')
-        %x{find bin lib -type f >#{tempfile.path}}
-        system('vim -O "%s" "bin/%s"' % [tempfile.path, File.basename(task_bin)])   #, task_bin_dir, files.uniq.join(' ')])
-        tempfile.close
-        tempfile.unlink
-        CliTasks::Commands.commit('auto-saving bin/note')
-        return 0
+      end
+      tempfile = Tempfile.new('note-project')
+      %x{find bin lib -type f >#{tempfile.path}}
+      system('vim -O "%s" "bin/%s"' % [tempfile.path, File.basename(task_bin)])   #, task_bin_dir, files.uniq.join(' ')])
+      tempfile.close
+      tempfile.unlink
+      CliTasks::Commands.commit('auto-saving bin/note')
+      return true
+    end
+
+    def process_subcommand
+      return edit_bin if is_edit_bin_subcommand?
+
+      Dir.chdir(world.task_path)
+
+      case command
       when 'index'
         CliTasks::Commands.rebuild
         CliTasks::Commands.index
