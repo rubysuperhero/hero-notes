@@ -23,7 +23,7 @@ module CliTasks
     end
 
     def remove_empty_directories
-      Dir[ [@path, '/**/'].join(?/) ].each do |file|
+      Dir[ [@path, '/**/'].join(?/) ].each do |dir|
         next unless File.directory?(dir)
         next if File.basename(dir)[/^[.]/]
         next unless (Dir.entries(d) - %w{ . .. }).empty?
