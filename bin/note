@@ -49,7 +49,7 @@ module Hero
       command[/--?e(d(i(t)?)?)?/] ? true : false
     end
 
-    def edit_bin(args)
+    def edit_bin
       task_bin = File.realpath(__FILE__)
       task_bin_dir = File.dirname(task_bin)
       git_dir = `cd #{task_bin_dir}; git rev-parse --show-toplevel`.chomp
@@ -72,7 +72,7 @@ module Hero
     def process_subcommand
       return edit_bin if is_edit_bin_subcommand?
 
-      Dir.chdir(world.task_path)
+      Dir.chdir(CliTasks::Commands.world.task_path)
 
       case command
       when 'index'

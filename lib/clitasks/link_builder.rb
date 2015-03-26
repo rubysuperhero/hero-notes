@@ -54,7 +54,7 @@ module CliTasks
       world.stories.each do |story|
         story.tags.each do |tag|
           create_link(nil, tag, story)
-          create_link('all', tag, story)
+          # create_link('all', tag, story)
         end
       end
     end
@@ -62,7 +62,7 @@ module CliTasks
     def by_status
       world.stories.each do |story|
         create_link('status', story.status, story)
-        create_link('all', story.status, story)
+        # create_link('all', story.status, story)
       end
     end
 
@@ -70,7 +70,7 @@ module CliTasks
       world.stories.each do |story|
         Array(story.created_by).each do |creator|
           create_link('created_by', creator, story)
-          create_link('all', creator, story)
+          # create_link('all', creator, story)
         end
       end
     end
@@ -78,7 +78,7 @@ module CliTasks
     def by_restriction
       world.stories.each do |story|
         create_link('restricted_to', story.restricted_to, story)
-        create_link('all', story.restricted_to, story)
+        # create_link('all', story.restricted_to, story)
       end
     end
 
@@ -86,7 +86,7 @@ module CliTasks
       world.stories.each do |story|
         Array(story.assigned_to).each do |assignment|
           create_link('assigned_to', assignment, story)
-          create_link('all', assignment, story)
+          # create_link('all', assignment, story)
         end
       end
     end
