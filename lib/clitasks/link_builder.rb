@@ -26,7 +26,7 @@ module CliTasks
       Dir[ [@path, '/**/'].join(?/) ].each do |dir|
         next unless File.directory?(dir)
         next if File.basename(dir)[/^[.]/]
-        next unless (Dir.entries(d) - %w{ . .. }).empty?
+        next unless (Dir.entries(dir) - %w{ . .. }).empty?
         puts "Removing %s..." % dir
         Dir.rmdir(dir)
       end
