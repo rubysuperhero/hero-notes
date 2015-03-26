@@ -97,7 +97,7 @@ module CliTasks
       def index
         original_dir = Dir.pwd
         Dir.chdir(world.path)
-        file = 'file-index.markdown'
+        file = 'file-index.textile'
         list = index_glob
         IO.write(file, list.unshift(Dir.pwd, '').join("\n").gsub(/^/, '> '))
         system("vim", file)
