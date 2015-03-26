@@ -13,10 +13,22 @@ module CliTasks
         links.by_tag
         links.by_metadata
         links.to_all
+        links.remove_empty_directories
+
         # links.by_status
         # links.by_creator
         # links.by_assignment
         # links.by_restriction
+      end
+    end
+
+    def remove_empty_directories
+      Dir[ [@path, '/**/'].join(?/) ].each do |file|
+        next unless File.directory?(dir)
+        next if File.basename(dir)[/^[.]/]
+        next unless (Dir.entries(d) - %w{ . .. }).empty?
+        puts "Removing %s..." % dir
+        Dir.rmdir(dir)
       end
     end
 

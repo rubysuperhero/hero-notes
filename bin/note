@@ -72,7 +72,7 @@ module Hero
     def process_subcommand
       return edit_bin if is_edit_bin_subcommand?
 
-      Dir.chdir(CliTasks::Commands.world.task_path)
+      Dir.chdir(CliTasks::Commands.world.path)
 
       case command
       when 'index'
