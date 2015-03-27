@@ -14,7 +14,7 @@ module CliTasks
           next if File.basename(f)[/^[.]/]
           if File.directory?(f)
             f = f.sub(/\/*$/, ?/)
-            dirs += ['', f] + index_glob(f)
+            dirs += ['', f] + collect_file_list(f)
           else
             files << f
           end
