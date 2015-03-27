@@ -14,10 +14,10 @@ module CliTasks
       end
     end
 
-    attr_accessor :original_dir, :path, :options
+    attr_accessor :original_path, :path, :options
 
     def initialize(path=world.path, options={})
-      @original_dir = Dir.pwd
+      @original_path = Dir.pwd
       @path = path
       @options = options
     end
