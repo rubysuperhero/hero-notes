@@ -95,12 +95,15 @@ module CliTasks
       end
 
       def index
-        original_dir = Dir.pwd
-        Dir.chdir(world.path)
-        file = 'file-index'
-        list = index_glob
-        IO.write(file, list.unshift(Dir.pwd, '').join("\n").gsub(/^/, '> '))
-        system("vim", file)
+        ProjectFile.generate_and_open(world.path)
+      end
+
+      def update_index
+        ProjectFile.generate(world.path)
+      end
+
+      def print_index
+        ProjectFile.generate_and_print(world.path)
       end
 
       def rebuild

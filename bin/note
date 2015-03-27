@@ -54,17 +54,18 @@ module Hero
       task_bin_dir = File.dirname(task_bin)
       git_dir = `cd #{task_bin_dir}; git rev-parse --show-toplevel`.chomp
       Dir.chdir(git_dir)
-      files = []
-      if args.count > 0
-        args.flat_map do |arg|
-          files += Dir["{bin,lib}/**/*.rb"].grep Regexp.new('.*' + arg.scan(/./).join('.*'))
-        end
-      end
-      tempfile = Tempfile.new('note-project')
-      %x{find bin lib -type f >#{tempfile.path}}
-      system('vim -O "%s" "bin/%s"' % [tempfile.path, File.basename(task_bin)])   #, task_bin_dir, files.uniq.join(' ')])
-      tempfile.close
-      tempfile.unlink
+      # files = []
+      # if args.count > 0
+      #   args.flat_map do |arg|
+      #     files += Dir["{bin,lib}/**/*.rb"].grep Regexp.new('.*' + arg.scan(/./).join('.*'))
+      #   end
+      # end
+      # tempfile = Tempfile.new('note-project')
+      # %x{find bin lib -type f >#{tempfile.path}}
+      # system('vim -O "%s" "bin/%s"' % [tempfile.path, File.basename(task_bin)])   #, task_bin_dir, files.uniq.join(' ')])
+      # tempfile.close
+      # tempfile.unlink
+      CliTasks::ProjectFile.generate_and_open(git_dir)
       CliTasks::Commands.commit('auto-saving bin/note')
       return true
     end
@@ -78,6 +79,14 @@ module Hero
       when 'index'
         CliTasks::Commands.rebuild
         CliTasks::Commands.index
+        CliTasks::Commands.rebuild
+      when 'update_index'
+        CliTasks::Commands.rebuild
+        CliTasks::Commands.update_index
+        CliTasks::Commands.rebuild
+      when 'print_index'
+        CliTasks::Commands.rebuild
+        CliTasks::Commands.print_index
         CliTasks::Commands.rebuild
       when 'save', 's'
         CliTasks::Commands.save args, $stdin

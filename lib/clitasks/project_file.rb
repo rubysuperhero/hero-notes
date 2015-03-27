@@ -1,8 +1,16 @@
 module CliTasks
   class ProjectFile
     class << self
-      def generate_for_dir(path=World.instance.path, options={})
+      def generate(path=World.instance.path, options={})
         new(path, options).tap(&:generate)
+      end
+
+      def generate_and_open(path=World.instance.path, options={})
+        new(path, options).tap(&:generate_and_open)
+      end
+
+      def generate_and_print(path=World.instance.path, options={})
+        new(path, options).tap(&:generate_and_print)
       end
     end
 
@@ -25,6 +33,14 @@ module CliTasks
       Dir.chdir(path)
       ret = save_file
       open_file
+      Dir.chdir(original_path)
+      ret
+    end
+
+    def generate_and_print
+      Dir.chdir(path)
+      ret = save_file
+      print_file
       Dir.chdir(original_path)
       ret
     end
@@ -66,6 +82,10 @@ module CliTasks
 
     def open_file
       system("vim", filename)
+    end
+
+    def print_file
+      puts file_data
     end
 
     def world
