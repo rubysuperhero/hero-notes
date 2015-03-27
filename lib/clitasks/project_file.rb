@@ -1,26 +1,32 @@
 module CliTasks
   class ProjectFile
     class << self
-      def for_dir(path=Dir.pwd, options={})
-        new(path, options)
+      def generate_for_dir(path=World.instance.path, options={})
+        new(path, options).tap(&:generate)
       end
     end
 
     attr_accessor :original_dir, :path, :options
 
-    def initialize(path=Dir.pwd, options={})
+    def initialize(path=world.path, options={})
       @original_dir = Dir.pwd
       @path = path
       @options = options
-      Dir.chdir(world.path)
     end
 
     def generate
-
+      Dir.chdir(path)
+      ret = save_file
+      Dir.chdir(original_path)
+      ret
     end
 
     def generate_and_open
-
+      Dir.chdir(path)
+      ret = save_file
+      open_file
+      Dir.chdir(original_path)
+      ret
     end
 
     def file_list(dir='')
