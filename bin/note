@@ -66,6 +66,7 @@ module Hero
       # tempfile.close
       # tempfile.unlink
       CliTasks::ProjectFile.generate(git_dir)
+      Dir.chdir(git_dir)
       system('vim -O', 'project-index', 'bin/note', 'lib/clitasks/commands.rb')
       CliTasks::Commands.commit('auto-saving bin/note')
       return true
