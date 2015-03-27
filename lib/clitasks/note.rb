@@ -38,7 +38,7 @@ module CliTasks
     end
 
     def id
-      @id ||= File.basename(file, '.rb')
+      @id ||= File.basename(file).sub(/[.]s?hdoc$/, '')
     end
 
     def extract_tags

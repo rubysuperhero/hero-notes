@@ -62,10 +62,12 @@ module CliTasks
     end
 
     def file_data
-      data = file_list
-      data = data.unshift(Dir.pwd, '')
-      data = data.join("\n")
-      data.gsub(/^/, '> ')
+      data = [
+        '',
+        "Project Directory: %s" % Dir.pwd,
+        '',
+        file_list,
+      ].flatten * "\n"
     end
 
     def filename

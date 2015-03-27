@@ -2,7 +2,12 @@ module CliTasks
   class Commands
     class << self
       def commit(message='auto-saving notes')
-        puts `git add --all; git commit -m '#{message} @ #{Time.now.strftime('%Y-%m-%d %H:%M:%S %Z')}'`
+        addall = %x{git add --all}
+        files = %x{git status -s}.lines.map(&:chomp)
+        files = files.map{|f| f.sub(/^.../, '').sub(/.* -> /, '') }
+        files_changed = files.count
+        commit = %x{git commit -m '#{files_changed} files changed: #{files.join(', ')} @ #{Time.now.strftime('%Y-%m-%d %H:%M:%S %Z')}'}
+        puts_remote = %x{git push origin --all}
       end
 
       def edit(*args)
@@ -22,7 +27,7 @@ module CliTasks
       end
 
       def next_filename(counter=0)
-        filename = '%s/%s%02d.rb' % [world.task_path, Time.now.to_i, counter]
+        filename = '%s/%s%02d.hdoc' % [world.task_path, Time.now.to_i, counter]
         File.exist?(filename) ? next_filename(counter + 1) : filename
       end
 

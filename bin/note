@@ -78,6 +78,9 @@ module Hero
       Dir.chdir(CliTasks::Commands.world.path)
 
       case command
+      when 'next_filename'
+        puts CliTasks::Commands.next_filename
+        return
       when 'index'
         CliTasks::Commands.rebuild
         CliTasks::Commands.index

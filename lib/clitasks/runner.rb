@@ -3,7 +3,7 @@ module CliTasks
     def self.run(*files)
       world.reset
       files.flat_map{|file|
-        Dir[File.directory?(file) && [file,'/*.rb'].join || file]
+        Dir[File.directory?(file) && [file,'/*.{s,}hdoc'].join || file]
       }.map{|file|
         begin
           note = Note.from_file(file)
