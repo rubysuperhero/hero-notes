@@ -95,7 +95,9 @@ module CliTasks
       end
 
       def index
-        ProjectFile.generate_and_open(world.path)
+        ProjectFile.generate(world.path)
+        Dir.chdir world.path
+        system('vim -O', 'project-index', 'bin/note', 'lib/clitasks/commands.rb')
       end
 
       def update_index
