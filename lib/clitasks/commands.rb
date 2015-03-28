@@ -66,11 +66,20 @@ module CliTasks
         puts collect(args, stdin).ai(raw: true)
       end
 
+      # def collect(args=ARGV, stdin=$stdin)
+      #   notes = args.map(&Note.method(:from_file))
+      #   notes << Note.from_stdin(stdin)
+      #   notes = [Note.from_string('')] if notes.compact.none?
+      #   notes.compact
+      # end
+
       def collect(args=ARGV, stdin=$stdin)
-        notes = args.map(&Note.method(:from_file))
-        notes << Note.from_stdin(stdin)
-        notes = [Note.from_string('')] if notes.compact.none?
-        notes.compact
+        notes = []
+        notes += args.flat_map do |arg|
+          Note.split IO.read_file(arg)
+        end
+        notes += Note.split IO.read_stdin(stdin)
+        notes.flatten.compact
       end
 
 #       def create(*args)

@@ -25,6 +25,13 @@ module CliTasks
         return nil if io.tty?
         from_string io.read
       end
+
+      def split(data='')
+        notes = (data || '').split(/(\A|\n)name:\s*|^---next.note---\n/i)
+        notes.map do |str|
+          from_string(str)
+        end
+      end
     end
 
     def initialize(data='', file=nil)
@@ -47,7 +54,7 @@ module CliTasks
 
     def extract_metadata
       @metadata ||= lines.take_while do |line|
-        line[/^\w+:\s*\w|^\s*$/]
+        line[metadata_line_regex] # /^\w+:\s*\w|^\s*$/]
       end.inject({}) do |h,line|
         md = line.match(/^(\w+)\s*:\s*(\w.*)$/)
         md &&= Hash[md[1], md[2]]
@@ -62,15 +69,19 @@ module CliTasks
     def short_name
       extract_name[/^\s*(.{0,79}(?!\S))/]
     rescue => e
-      ap file: file
-      binding.pry
-      ap file: file
+      puts({file: file}.ai(plain: true, raw: true, index: false))
     end
 
     def extract_body
       @body ||= lines.drop_while do |line|
-        line[/^[\w\s]+:\s*\w|^\s*$/]
+        line[metadata_line_regex] # /^[\w\s]+:\s*\w|^\s*$/]
       end
+    end
+
+    private
+
+    def metadata_line_regex
+      /^\w+:\s*\w|^\s*$/
     end
   end
 end
