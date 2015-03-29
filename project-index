@@ -14,63 +14,14 @@ bin/
 bin/note
 bin/task
 
-clitasks-stories/
-clitasks-stories/config.yml
-
-clitasks-stories/index/
-clitasks-stories/index/20140421005800.rb
-clitasks-stories/index/20140421010200.rb
-clitasks-stories/index/20140421010600.rb
-clitasks-stories/index/20140421020200.rb
-clitasks-stories/index/20140422232916.rb
-clitasks-stories/index/20140422233214.rb
-clitasks-stories/index/20140422233537.rb
-clitasks-stories/index/20140422233812.rb
-clitasks-stories/index/20140422234102.rb
-clitasks-stories/index/20140422234537.rb
-clitasks-stories/index/20140422235000.rb
-clitasks-stories/index/20140422235200.rb
-clitasks-stories/index/20140422235300.rb
-clitasks-stories/index/20140423000507.rb
-clitasks-stories/index/20140423000844.rb
-clitasks-stories/index/20140423001409.rb
-clitasks-stories/index/20140423002056.rb
-clitasks-stories/index/20140423003427.rb
-clitasks-stories/index/20140423003655.rb
-clitasks-stories/index/20140423004527.rb
-clitasks-stories/index/20140423010200.rb
-clitasks-stories/index/20140423010346.rb
-clitasks-stories/index/20140423011057.rb
-clitasks-stories/index/20140423011433.rb
-clitasks-stories/index/20140423011551.rb
-clitasks-stories/index/20140423011623.rb
-clitasks-stories/index/20140423012226.rb
-clitasks-stories/index/20140423012347.rb
-clitasks-stories/index/20140423012405.rb
-clitasks-stories/index/20140423012434.rb
-clitasks-stories/index/20140423024742.rb
-clitasks-stories/index/20140425102904.rb
-clitasks-stories/index/20140425191357.rb
-clitasks-stories/index/20140425191921.rb
-clitasks-stories/index/20140425201100.rb
-clitasks-stories/index/20140425205726.rb
-clitasks-stories/index/20140425212720.rb
-clitasks-stories/index/20140426183100.rb
-clitasks-stories/index/20140508144511.rb
-clitasks-stories/index/20140508144606.rb
-clitasks-stories/index/20140509013250.rb
-clitasks-stories/index/20140524235849.rb
-
 doc/
-doc/docformattest.hero
+doc/docformattest.hero -> examples/new_format_unencrypted.hdoc
 doc/fulcrum-features.pdf
 doc/kanban - agile methodology.pdf
 doc/web-based-competitors
 doc/write-your-own-gemspec.pdf
 
 examples/
-examples/first_story.rb
-examples/second_story.rb
 
 lib/
 lib/clitasks.rb
