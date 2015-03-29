@@ -30,19 +30,27 @@ module CliTasks
     end
 
     def generate_and_open
-      Dir.chdir(path)
-      ret = save_file
-      open_file
-      Dir.chdir(original_path)
-      ret
+      generate.tap{
+        if $stdout.tty?
+          open_file
+        else
+          print_file
+        end
+      }
+      # Dir.chdir(path)
+      # ret = save_file
+      # open_file
+      # Dir.chdir(original_path)
+      # ret
     end
 
     def generate_and_print
-      Dir.chdir(path)
-      ret = save_file
-      print_file
-      Dir.chdir(original_path)
-      ret
+      generate.tap{ print_file }
+      # Dir.chdir(path)
+      # ret = save_file
+      # print_file
+      # Dir.chdir(original_path)
+      # ret
     end
 
     def file_list(dir='')

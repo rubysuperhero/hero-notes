@@ -9,6 +9,10 @@ module CliTasks
       end
     end
 
+    def self.screen(*args)
+      new(*args).screen
+    end
+
     def self.print(*args)
       new(*args).print
     end
