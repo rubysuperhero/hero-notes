@@ -73,6 +73,9 @@ vim-notes/ftplugin/notes.vim
 
 vim-notes/syntax/
 vim-notes/syntax/notes.vim
+
+------
+
  name                                                                             | tags
  -------------------------------------------------------------------------------- | ------------------------------
  how does this one act #try #delete #notes #stdout                                | delete
