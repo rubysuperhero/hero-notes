@@ -75,7 +75,10 @@ module CliTasks
         "Project Directory: %s" % Dir.pwd,
         '',
         file_list,
-        Viewer.screen world.task_path
+        '',
+        '------',
+        '',
+        Viewer.screen(world.task_path)
       ].flatten * "\n"
     end
 

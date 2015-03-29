@@ -15,13 +15,14 @@ bin/note
 bin/task
 
 doc/
-doc/docformattest.hero -> examples/new_format_unencrypted.hdoc
+doc/docformattest.hero
 doc/fulcrum-features.pdf
 doc/kanban - agile methodology.pdf
 doc/web-based-competitors
 doc/write-your-own-gemspec.pdf
 
 examples/
+examples/new_format_unencrypted.hdoc
 
 lib/
 lib/clitasks.rb
@@ -72,3 +73,220 @@ vim-notes/ftplugin/notes.vim
 
 vim-notes/syntax/
 vim-notes/syntax/notes.vim
+ name                                                                             | tags
+ -------------------------------------------------------------------------------- | ------------------------------
+ how does this one act #try #delete #notes #stdout                                | delete
+                                                                                  | notes
+                                                                                  | stdout
+                                                                                  | try
+ File: /Users/macbookpro/hero/notes/.index/142760865400.hdoc
+ -------------------------------------------------------------------------------- | ------------------------------
+ how does this one act #try #delete #notes #stdout                                | delete
+                                                                                  | notes
+                                                                                  | stdout
+                                                                                  | try
+ File: /Users/macbookpro/hero/notes/.index/142760861700.hdoc
+ -------------------------------------------------------------------------------- | ------------------------------
+ #delete this note too                                                            | delete
+ File: /Users/macbookpro/hero/notes/.index/142760843700.hdoc
+ -------------------------------------------------------------------------------- | ------------------------------
+ #delete this note later #try                                                     | delete
+                                                                                  | try
+ File: /Users/macbookpro/hero/notes/.index/142760839100.hdoc
+ -------------------------------------------------------------------------------- | ------------------------------
+ reorganize the hnotes repo in a way that it can be executed (unix-style) by the  | hero
+ H command #todo #notes #H #hero                                                  | notes
+                                                                                  | todo
+ File: /Users/macbookpro/hero/notes/.index/142760833100.hdoc
+ -------------------------------------------------------------------------------- | ------------------------------
+ #try writing an #experiment where the text that is puts(ed) is obviously         | experiment
+ different depending on STDOUT#tty? #ruby                                         | ruby
+                                                                                  | try
+ File: /Users/macbookpro/hero/notes/.index/142760684700.hdoc
+ -------------------------------------------------------------------------------- | ------------------------------
+ #try reading stdin that comes from another ruby script using a lessthan file     | experiment
+ redirect #ruby #experiment #hero #H                                              | hero
+                                                                                  | ruby
+                                                                                  | try
+ File: /Users/macbookpro/hero/notes/.index/142760646100.hdoc
+ -------------------------------------------------------------------------------- | ------------------------------
+ new subcmd: example that opens a demo note using most of the document format's   | hero
+ features #hero #todo #notes                                                      | notes
+                                                                                  | todo
+ File: /Users/macbookpro/hero/notes/.index/142752059500.hdoc
+ -------------------------------------------------------------------------------- | ------------------------------
+ if project dir has .git try using git ls-files to comply with .gitignore #hero   | hero
+ #H #todo #projectfile                                                            | projectfile
+                                                                                  | todo
+ File: /Users/macbookpro/hero/notes/.index/142751663600.hdoc
+ -------------------------------------------------------------------------------- | ------------------------------
+ experiment with multi-line formatting for each note when listing (see            | hero
+ Transmission, etc.) #notes #hero #todo                                           | notes
+                                                                                  | todo
+ File: /Users/macbookpro/hero/notes/.index/142751635400.hdoc
+ -------------------------------------------------------------------------------- | ------------------------------
+ show relative and abs note path for note list #notes #hero #todo                 | hero
+                                                                                  | notes
+                                                                                  | todo
+ File: /Users/macbookpro/hero/notes/.index/142751617200.hdoc
+ -------------------------------------------------------------------------------- | ------------------------------
+ designate a specific delimiter for importing a single file but splitting it into | hero
+ mulitple notes #notes #todo #hero                                                | notes
+                                                                                  | todo
+ File: /Users/macbookpro/hero/notes/.index/142743113900.hdoc
+ -------------------------------------------------------------------------------- | ------------------------------
+ make a note subcommand for just printing the next available filename to use wih  | hero
+ a vim mapping #notes #todo #vim #hero                                            | notes
+                                                                                  | todo
+                                                                                  | vim
+ File: /Users/macbookpro/hero/notes/.index/142743053600.hdoc
+ -------------------------------------------------------------------------------- | ------------------------------
+ test super long key mapping '<leader>Hns' to save a new note #notes #hero        | feature
+ #feature                                                                         | hero
+                                                                                  | notes
+ File: /Users/macbookpro/hero/notes/.index/142743035300.hdoc
+ -------------------------------------------------------------------------------- | ------------------------------
+ approach hero training/hero docs more like a narrative of how i work on a        | hero
+ project or with certain tools #hero #hero-docs #hero-training #todo              | hero
+                                                                                  | hero
+                                                                                  | todo
+ File: /Users/macbookpro/hero/notes/.index/142743021100.hdoc
+ -------------------------------------------------------------------------------- | ------------------------------
+ create a mapping for `:.!note save` and `:'<,'>!note save` #notes #todo #vim     | hero
+ #hero                                                                            | notes
+                                                                                  | todo
+                                                                                  | vim
+ File: /Users/macbookpro/hero/notes/.index/142742978900.hdoc
+ -------------------------------------------------------------------------------- | ------------------------------
+ re-namespace hero notes from clitasks to hero/note(s) and move into the project  | hero
+ with bin/H #notes #hero #todo                                                    | notes
+                                                                                  | todo
+ File: /Users/macbookpro/hero/notes/.index/142742973400.hdoc
+ -------------------------------------------------------------------------------- | ------------------------------
+ include note details (output of 'note list') in the project-index file #notes    | hero
+ #todo #projectfile #hero                                                         | notes
+                                                                                  | projectfile
+                                                                                  | todo
+ File: /Users/macbookpro/hero/notes/.index/142742919400.hdoc
+ -------------------------------------------------------------------------------- | ------------------------------
+ #EPIC setup bin/H with all the known subcommands: project, note, etc #todo       | EPIC
+ #tools #hero                                                                     | hero
+                                                                                  | todo
+                                                                                  | tools
+ File: /Users/macbookpro/hero/notes/.index/142742399600.hdoc
+ -------------------------------------------------------------------------------- | ------------------------------
+ when a project file is generated, add it's absolute path a "projects" file in    | hero
+ the home directory #hero #todo #projectfile                                      | projectfile
+                                                                                  | todo
+ File: /Users/macbookpro/hero/notes/.index/142742334600.hdoc
+ -------------------------------------------------------------------------------- | ------------------------------
+ #google bitbucket command-line tools #todo #google #research                     | google
+                                                                                  | google
+                                                                                  | research
+                                                                                  | todo
+ File: /Users/macbookpro/hero/notes/.index/142742252900.hdoc
+ -------------------------------------------------------------------------------- | ------------------------------
+ change the note file ext to .hdoc and .shdoc for encrypted/secure notes/tasks    | hero
+ (see details for more) #notes #hero #todo                                        | notes
+                                                                                  | todo
+ File: /Users/macbookpro/hero/notes/.index/142742247400.hdoc
+ -------------------------------------------------------------------------------- | ------------------------------
+ use system() instead of backticks to git commit to reduce output just use the    | hero
+ return value to display success or fail #notes #todo #hero                       | notes
+                                                                                  | todo
+ File: /Users/macbookpro/hero/notes/.index/142741988400.hdoc
+ -------------------------------------------------------------------------------- | ------------------------------
+ open lib/clitasks/commands.rb when using the note -e subcommand #notes #todo     | hero
+ #hero                                                                            | notes
+                                                                                  | todo
+ File: /Users/macbookpro/hero/notes/.index/142741982000.hdoc
+ -------------------------------------------------------------------------------- | ------------------------------
+ the project file for note's -e cmd should not be a tempfile #notes #hero #todo   | hero
+                                                                                  | notes
+                                                                                  | todo
+ File: /Users/macbookpro/hero/notes/.index/142741962000.hdoc
+ -------------------------------------------------------------------------------- | ------------------------------
+ note subcommand to just print an index instead of opening it in vim #notes #todo | hero
+ #hero                                                                            | notes
+                                                                                  | todo
+ File: /Users/macbookpro/hero/notes/.index/142741935000.hdoc
+ -------------------------------------------------------------------------------- | ------------------------------
+ expand on the idea of a project file.  allow custom generators #hero #todo       | hero
+ #projectfile                                                                     | projectfile
+                                                                                  | todo
+ File: /Users/macbookpro/hero/notes/.index/142741841000.hdoc
+ -------------------------------------------------------------------------------- | ------------------------------
+ #EPIC #bea - Project Planning                                                    | EPIC
+                                                                                  | bea
+ File: /Users/macbookpro/hero/notes/.index/142739363000.hdoc
+ -------------------------------------------------------------------------------- | ------------------------------
+ create CliTasks::System{,::Unix,::Windows} for OS-specific tasks (like using     | 
+ find to delete empty dirs)                                                       | 
+ File: /Users/macbookpro/hero/notes/.index/142733473800.hdoc
+ -------------------------------------------------------------------------------- | ------------------------------
+ testing my chdir/editbin changes to bin/note #todo #try #hero                    | hero
+                                                                                  | todo
+                                                                                  | try
+ File: /Users/macbookpro/hero/notes/.index/142733395600.hdoc
+ -------------------------------------------------------------------------------- | ------------------------------
+ steal vim-fugitive's . mapping in gstatus to use with project files #todo #hero  | env
+ #env                                                                             | hero
+                                                                                  | todo
+ File: /Users/macbookpro/hero/notes/.index/142733300700.hdoc
+ -------------------------------------------------------------------------------- | ------------------------------
+ #EPIC create a new github project called anyproject #todo #projects              | EPIC
+                                                                                  | projects
+                                                                                  | todo
+ File: /Users/macbookpro/hero/notes/.index/142730380000.hdoc
+ -------------------------------------------------------------------------------- | ------------------------------
+ make sure pwd is correct before auto-saving #notes #todo #hero                   | hero
+                                                                                  | notes
+                                                                                  | todo
+ File: /Users/macbookpro/hero/notes/.index/142729231300.hdoc
+ -------------------------------------------------------------------------------- | ------------------------------
+ create a tool for tagging a commit as having technical debt (format: debt-<pk>)  | git
+                                                                                  | hero
+                                                                                  | tools
+ File: /Users/macbookpro/hero/notes/.index/142729194000.hdoc
+ -------------------------------------------------------------------------------- | ------------------------------
+ #try checking STDOUT.tty? in #notes for cmds like index to see if output is      | notes
+                                                                                  | try
+ File: /Users/macbookpro/hero/notes/.index/142728658500.hdoc
+ -------------------------------------------------------------------------------- | ------------------------------
+ #EPIC bin/H index - generating a file index for a project including syntax       | EPIC
+ highlighting #hero #todo #tools #H                                               | hero
+                                                                                  | todo
+                                                                                  | tools
+ File: /Users/macbookpro/hero/notes/.index/142728579200.hdoc
+ -------------------------------------------------------------------------------- | ------------------------------
+ convert lib/salesforce.rb aka Salesforce to a singleton class                    | 
+ File: /Users/macbookpro/hero/notes/.index/142725082500.hdoc
+ -------------------------------------------------------------------------------- | ------------------------------
+ pick a new file extension for notes, they aren't ruby files anymore #notes #todo | hero
+ #hero                                                                            | notes
+                                                                                  | todo
+ File: /Users/macbookpro/hero/notes/.index/142723710300.hdoc
+ -------------------------------------------------------------------------------- | ------------------------------
+ either create files with unix line endings or parse them so non-unix do not      | bug
+ break formatting/output #notes #todo #bug                                        | notes
+                                                                                  | todo
+ File: /Users/macbookpro/hero/notes/.index/142723640200.hdoc
+ -------------------------------------------------------------------------------- | ------------------------------
+ convert def into a bin/ and use it to source files too, creating an index of     | env
+ aliases/functions with the file they came from #hero #todo #tools #env           | hero
+                                                                                  | todo
+                                                                                  | tools
+ File: /Users/macbookpro/hero/notes/.index/142722862000.hdoc
+ -------------------------------------------------------------------------------- | ------------------------------
+ #research how to use the yankring vim plugin #vim #todo                          | research
+                                                                                  | todo
+                                                                                  | vim
+ File: /Users/macbookpro/hero/notes/.index/142721780001.hdoc
+ -------------------------------------------------------------------------------- | ------------------------------
+ #todo find subreddits for #shell #command-line #bash or #zsh #productivity tips  | bash
+                                                                                  | command
+                                                                                  | productivity
+                                                                                  | shell
+                                                                                  | todo
+                                                                                  | zsh
+ File: /Users/macbookpro/hero/notes/.index/142714881400.hdoc
