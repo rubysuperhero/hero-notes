@@ -15,7 +15,11 @@ module CliTasks
       end
 
       def edit_files(*files)
-        system(ENV['EDITOR'] || 'vim', *(files.flatten))
+        if $stdout.tty?
+          system(ENV['EDITOR'] || 'vim', *(files.flatten))
+        else
+          puts files.flatten.join(' ')
+        end
       end
 
       def search(*args)
@@ -76,9 +80,9 @@ module CliTasks
       def collect(args=ARGV, stdin=$stdin)
         notes = []
         notes += args.flat_map do |arg|
-          Note.split IO.read_file(arg)
+          Note.split NoteIO.read_file(arg)
         end
-        notes += Note.split IO.read_stdin(stdin)
+        notes += Note.split NoteIO.read_stdin(stdin)
         notes.flatten.compact
       end
 

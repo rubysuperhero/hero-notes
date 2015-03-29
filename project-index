@@ -1,11 +1,6 @@
 
 Project Directory: /Users/macbookpro/repos/hnotes
 
-# note creating keymaps:
-
-:nnoremap <leader>hncp o #hero #h #todo #projectfile<esc>0i
-:nnoremap <leader>hncn o #hero #todo #notes<esc>0i
-
 clitasks.gemspec
 Gemfile
 Gemfile.lock
@@ -14,15 +9,6 @@ project-index
 project.files
 Rakefile
 README.md
-:nnoremap <leader>Hnn o #hero #H #todo #projectfile<esc>0i
-Creating '/Users/macbookpro/hero/notes/.index/142751663600.hdoc'...done
-To git@bitbucket.org:unixsuperhero/notes-v4.git
-   43607e3..570727d  master -> master
- #tags #go #here
-
-:nm  <leader>hnm o:nnoremap <leader<C-V>>Hnn o #start #typing #tags<esc<C-V>>0i<Esc>0fsvt<<c-g>
-:nm  <leader>hnn o #hero #H #todo #projectfile<Esc>0i
-:nm  <leader>hns !!note save<CR>
 
 bin/
 bin/note
@@ -92,6 +78,7 @@ lib/clitasks.rb
 lib/clitasks/
 lib/clitasks/commands.rb
 lib/clitasks/configuration.rb
+lib/clitasks/io.rb
 lib/clitasks/link_builder.rb
 lib/clitasks/note.rb
 lib/clitasks/project_file.rb

@@ -1,5 +1,6 @@
 module CliTasks
-  module IO
+  # module IO
+  module NoteIO
     extend self
 
     def read_file(filename)
@@ -10,7 +11,7 @@ module CliTasks
 
     def read_stdin(io=$stdin)
       return nil if io.tty?
-      from_string io.read
+      io.read
     end
   end
 end
