@@ -26,7 +26,7 @@ module CliTasks
     end
 
     def header
-      sprintf(" %-20s | %-60s | %-s\n", :id, :name, :tags)
+      sprintf(" %-80s | %-s\n", :name, :tags)
     end
 
     def wrap_in_column(str='',width=10)
@@ -38,23 +38,25 @@ module CliTasks
     end
 
     def separator
-      sprintf(" %-20s | %-60s | %-s\n", ?-*20, ?-*60, ?-*30)
+      sprintf(" %-80s | %-s\n", ?-*80, ?-*30)
     end
 
     def story(s)
       # make a method for each of the _col methods
       #status_col = wrap_in_column(s.status, 10)
-      id_col = wrap_in_column(s.id, 20)
+      #id_col = wrap_in_column(s.id, 20)
       #points_col = wrap_in_column(?* * s.points.to_i, 6)
-      name_col = wrap_in_column(s.name, 60)
+      name_col = wrap_in_column(s.name, 80)
       tags_col = wrap_in_column(s.tags.sort * "\n", 30)
 
       #total = total_lines(status_col, id_col, points_col, name_col, tags_col)
-      total = total_lines(id_col, name_col, tags_col)
+      #total = total_lines(id_col, name_col, tags_col)
+      total = total_lines(name_col, tags_col)
 
-      lines = Array.new(total).map{ " %-20s | %-60s | %-s\n" }
+      lines = Array.new(total).map{ " %-80s | %-s\n" }
 
-      lines.zip(id_col, name_col, tags_col).map{|r| sprintf(*r) }.join
+      data = lines.zip(name_col, tags_col).map{|r| sprintf(*r) }.join
+      data += format(" File: %s\n", s.file)
     end
 
     def stories
