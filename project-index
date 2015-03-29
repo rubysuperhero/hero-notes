@@ -78,9 +78,9 @@ lib/clitasks.rb
 lib/clitasks/
 lib/clitasks/commands.rb
 lib/clitasks/configuration.rb
-lib/clitasks/io.rb
 lib/clitasks/link_builder.rb
 lib/clitasks/note.rb
+lib/clitasks/note_io.rb
 lib/clitasks/project_file.rb
 lib/clitasks/runner.rb
 lib/clitasks/simple_dsl.rb

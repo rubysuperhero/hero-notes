@@ -2,12 +2,21 @@ module CliTasks
   class Commands
     class << self
       def commit(message='auto-saving notes')
-        addall = %x{git add --all}
-        files = %x{git status -s}.lines.map(&:chomp)
-        files = files.map{|f| f.sub(/^.../, '').sub(/.* -> /, '') }
-        files_changed = files.count
-        commit = %x{git commit -m '#{files_changed} files changed: #{files.join(', ')} @ #{Time.now.strftime('%Y-%m-%d %H:%M:%S %Z')}'}
-        puts_remote = %x{git push origin --all}
+        if $stdout.tty?
+          addall = %x{git add --all}
+          files = %x{git status -s}.lines.map(&:chomp)
+          files = files.map{|f| f.sub(/^.../, '').sub(/.* -> /, '') }
+          files_changed = files.count
+          commit = %x{git commit -m '#{files_changed} files changed: #{files.join(', ')} @ #{Time.now.strftime('%Y-%m-%d %H:%M:%S %Z')}'}
+          puts_remote = %x{git push origin --all &>/dev/null}
+        else
+          addall = %x{git add --all}
+          files = %x{git status -s}.lines.map(&:chomp)
+          files = files.map{|f| f.sub(/^.../, '').sub(/.* -> /, '') }
+          files_changed = files.count
+          commit = %x{git commit -m '#{files_changed} files changed: #{files.join(', ')} @ #{Time.now.strftime('%Y-%m-%d %H:%M:%S %Z')}'}
+          puts_remote = %x{git push origin --all &>/dev/null}
+        end
       end
 
       def edit(*args)
@@ -18,7 +27,7 @@ module CliTasks
         if $stdout.tty?
           system(ENV['EDITOR'] || 'vim', *(files.flatten))
         else
-          puts files.flatten.join(' ')
+          puts 'not opening because stdout is not a terminal'
         end
       end
 
@@ -37,7 +46,8 @@ module CliTasks
 
       def write(file, data='')
         FileUtils.mkdir_p(world.task_path)
-        checklog("Creating '#{file}'"){ File.new(file, 'w').tap{|f| f.write(data) }.close }
+        File.new(file, 'w').tap{|f| f.write(data) }.close
+        puts file
         file
       end
 
@@ -155,6 +165,7 @@ module CliTasks
       end
 
       def checklog(msg, &block)
+        return block.call unless $stdout.tty?
         print "#{msg}..."
         block.call
         puts 'done'
