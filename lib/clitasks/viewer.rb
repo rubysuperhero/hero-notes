@@ -9,6 +9,10 @@ module CliTasks
       end
     end
 
+    def self.tag_groups(*args)
+      new(*args).tag_groups
+    end
+
     def self.screen(*args)
       new(*args).screen
     end
@@ -19,6 +23,29 @@ module CliTasks
 
     def print
       puts screen
+    end
+
+    def tag_groups
+      stories.flat_map do |story|
+        story.tagged_notes
+      end.group_by do |story|
+        story.tag
+      end.sort_by{|k,v| k }.flat_map do |group,grouped_stories|
+        lines = [
+        ]
+        lines += grouped_stories.sort_by do |gs|
+          gs.name[/[a-z]/i].downcase
+        end.map do |s|
+          story(s)
+        end
+
+        [
+          '',
+          format(" |  TAG: | %s (%d)\n", group, grouped_stories.count),
+          lines.join(separator),
+          '',
+        ].join(outer_separator)
+      end
     end
 
     def screen
@@ -42,7 +69,11 @@ module CliTasks
     end
 
     def separator
-      sprintf(" %-80s | %-s\n", ?-*80, ?-*30)
+      sprintf(" %-82s-+-%-s\n", ?-*82, ?-*29)
+    end
+
+    def outer_separator
+      sprintf(" %-111s===\n", ?=*111)
     end
 
     def story(s)
@@ -50,17 +81,23 @@ module CliTasks
       #status_col = wrap_in_column(s.status, 10)
       #id_col = wrap_in_column(s.id, 20)
       #points_col = wrap_in_column(?* * s.points.to_i, 6)
-      name_col = wrap_in_column(s.name, 80)
+      name_col = wrap_in_column(s.name, 72)
+      name_col << ''
       tags_col = wrap_in_column(s.tags.sort * "\n", 30)
 
+      name_labels = ['Name:']
       #total = total_lines(status_col, id_col, points_col, name_col, tags_col)
       #total = total_lines(id_col, name_col, tags_col)
       total = total_lines(name_col, tags_col)
 
-      lines = Array.new(total).map{ " %-80s | %-s\n" }
+      lines = Array.new(total).map{ " | %5s | %-72s | %-s\n" }
 
-      data = lines.zip(name_col, tags_col).map{|r| sprintf(*r) }.join
-      data += format(" File: %s\n", s.file)
+      data = lines.zip(name_labels, name_col, tags_col)
+      # data.push([" ------ + %-72s +\n", ?- * 72])
+      data.push([" | File: | %-72s |\n", s.file])
+      data.map{|r| sprintf(*r) }.join
+      # data += separator
+      # data += format(" File: %s\n", s.file)
     end
 
     def stories
