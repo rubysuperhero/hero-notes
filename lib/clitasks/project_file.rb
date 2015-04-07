@@ -61,7 +61,14 @@ module CliTasks
         next if File.basename(f)[/^[.]/]
         if File.directory?(f)
           f = f.sub(/\/*$/, ?/)
-          dirs += ['', f] + file_list(f)
+          sublist = file_list(f)
+          label = format(" TAG: %s (%d)", f.sub(/\/+$/, ''), sublist.count)
+          labels = [
+            format('%s-', label.gsub(/./, ?-)),
+            label,
+            format('%s-', label.gsub(/./, ?-)),
+          ]
+          dirs += labels.unshift('').push('') + sublist
         else
           files << f
         end
@@ -74,11 +81,12 @@ module CliTasks
         '',
         "Project Directory: %s" % Dir.pwd,
         '',
-        file_list,
+        Viewer.tag_groups(world.task_path),
         '',
         '------',
         '',
-        Viewer.screen(world.task_path)
+        file_list,
+        # Viewer.screen(world.task_path)
       ].flatten * "\n"
     end
 
