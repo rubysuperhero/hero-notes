@@ -78,11 +78,23 @@ module CliTasks
       end
     end
 
+    def tagged_notes
+      tags.map do |tag|
+        TaggedNote.new(data, file).tap do |tn|
+          tn.tag = tag
+        end
+      end
+    end
+
     private
 
     def metadata_line_regex
       /^\w+:\s*\w|^\s*$/
     end
+  end
+
+  class TaggedNote < Note
+    attr_accessor :tag
   end
 end
 
