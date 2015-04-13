@@ -76,8 +76,15 @@ module CliTasks
       files + dirs
     end
 
+    def extract_header_and_footer
+      @original_header = File.exist?(filename) ? `sed -En '1,/^--- HEADER ---$/p' #{filename}` : ''
+      @original_footer = File.exist?(filename) ? `sed -En '/^--- FOOTER ---$/,$p' #{filename}` : ''
+    end
+
     def file_data
+      extract_header_and_footer
       data = [
+        @original_header,
         '',
         "Project Directory: %s" % Dir.pwd,
         '',
@@ -86,6 +93,9 @@ module CliTasks
         '------',
         '',
         file_list,
+        '',
+        @original_footer,
+        '',
         # Viewer.screen(world.task_path)
       ].flatten * "\n"
     end
