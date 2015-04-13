@@ -23,7 +23,7 @@ module CliTasks
 
     def defaults
       {
-        path: '%s/tasks' % ENV['HOME'],
+        path: '%s/hero/notes' % ENV['HOME'],
       }.with_indifferent_access
     end
   end

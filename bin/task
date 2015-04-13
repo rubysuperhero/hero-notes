@@ -36,49 +36,61 @@ else
 end
 
 case command
-when 'version'
-  puts CliTasks::VERSION
 when 'index'
   CliTasks::Commands.rebuild
   CliTasks::Commands.index
+  CliTasks::Commands.rebuild
+when 'add', 'a', 'new', 'n', 'create', 'c', 'import', 'i'
+  CliTasks::Commands.create ARGV, $stdin
+  CliTasks::Commands.rebuild
 when 'rebuild'
   CliTasks::Commands.rebuild
-when 'multi', 'many', 'mcreate'
-  CliTasks::Commands.mcreate *ARGV
-  CliTasks::Commands.rebuild
-when 'create', 'new', 'add', 'c', 'n', 'a'
-  CliTasks::Commands.create *ARGV
-  CliTasks::Commands.rebuild
-when 'edit'
-  CliTasks::Commands.edit *ARGV
-  CliTasks::Commands.rebuild
-when 'search'
-  if ARGV.any?{|arg| arg == '-e' }
-    CliTasks::Commands.edit *ARGV.reject{|arg| arg == '-e' }
-  else
-    CliTasks::Commands.search *ARGV
-  end
-  CliTasks::Commands.rebuild
-when 'import'
-  if ARGV.any?
-    tasks = IO.read(ARGV[0]).split(/\s*\n+\s*/)
-    CliTasks::Commands.mcreate *tasks
-    CliTasks::Commands.rebuild
-  else
-    f = Tempfile.new('tasks')
-    system ENV['EDITOR'] || 'vim', f.path
-    tasks = IO.read(f.path).split(/\s*\n+\s*/)
-    CliTasks::Commands.mcreate *tasks
-    CliTasks::Commands.rebuild
-  end
-when 'start'
-when 'finish'
-when 'tag'
-when 'comment'
-when 'list'
-  CliTasks::Commands.list *ARGV
-else
-  CliTasks::Commands.list *ARGV.unshift(command)
 end
+
+# case command
+# when 'version'
+#   puts CliTasks::VERSION
+# when 'index'
+#   CliTasks::Commands.rebuild
+#   CliTasks::Commands.index
+# when 'rebuild'
+#   CliTasks::Commands.rebuild
+# when 'multi', 'many', 'mcreate'
+#   CliTasks::Commands.mcreate *ARGV
+#   CliTasks::Commands.rebuild
+# when 'create', 'new', 'add', 'c', 'n', 'a'
+#   CliTasks::Commands.create *ARGV
+#   CliTasks::Commands.rebuild
+# when 'edit'
+#   CliTasks::Commands.edit *ARGV
+#   CliTasks::Commands.rebuild
+# when 'search'
+#   if ARGV.any?{|arg| arg == '-e' }
+#     CliTasks::Commands.edit *ARGV.reject{|arg| arg == '-e' }
+#   else
+#     CliTasks::Commands.search *ARGV
+#   end
+#   CliTasks::Commands.rebuild
+# when 'import'
+#   if ARGV.any?
+#     tasks = IO.read(ARGV[0]).split(/\s*\n+\s*/)
+#     CliTasks::Commands.mcreate *tasks
+#     CliTasks::Commands.rebuild
+#   else
+#     f = Tempfile.new('tasks')
+#     system ENV['EDITOR'] || 'vim', f.path
+#     tasks = IO.read(f.path).split(/\s*\n+\s*/)
+#     CliTasks::Commands.mcreate *tasks
+#     CliTasks::Commands.rebuild
+#   end
+# when 'start'
+# when 'finish'
+# when 'tag'
+# when 'comment'
+# when 'list'
+#   CliTasks::Commands.list *ARGV
+# else
+#   CliTasks::Commands.list *ARGV.unshift(command)
+# end
 
 # vim: ft=ruby

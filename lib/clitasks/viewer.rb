@@ -9,22 +9,55 @@ module CliTasks
       end
     end
 
+    def self.tag_groups(*args)
+      new(*args).tag_groups
+    end
+
+    def self.screen(*args)
+      new(*args).screen
+    end
+
     def self.print(*args)
       new(*args).print
     end
 
     def print
-      puts header
+      puts screen
+    end
 
-      puts stories.reverse.inject({}){|hash,s|
-        hash.merge( s.status => hash.fetch(s.status, []) << s )
-      }.map{|status,group|
-        [separator] + group.flat_map{|s| story(s) }
+    def tag_groups
+      stories.flat_map do |story|
+        story.tagged_notes
+      end.group_by do |story|
+        story.tag
+      end.sort_by{|k,v| k }.flat_map do |group,grouped_stories|
+        lines = [
+        ]
+        lines += grouped_stories.sort_by do |gs|
+          gs.name[/[a-z]/i].downcase
+        end.map do |s|
+          story(s)
+        end
+
+        [
+          '',
+          format(" |  TAG: | %s (%d)\n", group, grouped_stories.count),
+          lines.join(separator),
+          '',
+        ].join(outer_separator)
+      end
+    end
+
+    def screen
+      lines = [header]
+      lines += stories.reverse.map{|s|
+        story(s)
       }
+      lines.join(separator)
     end
 
     def header
-      sprintf(" %-10s | %-20s | %-6s | %-60s | %-s", :status, :id, :points, :name, :tags)
+      sprintf(" %-80s | %-s\n", :name, :tags)
     end
 
     def wrap_in_column(str='',width=10)
@@ -36,26 +69,35 @@ module CliTasks
     end
 
     def separator
-      sprintf(" %-10s | %-20s | %-6s | %-60s | %-s", ?-*10, ?-*20, ?-*6, ?-*60, ?-*30)
+      sprintf(" %-82s-+-%-s\n", ?-*82, ?-*29)
+    end
+
+    def outer_separator
+      sprintf(" %-111s===\n", ?=*111)
     end
 
     def story(s)
       # make a method for each of the _col methods
-      status_col = wrap_in_column(s.status, 10)
-      id_col = wrap_in_column(s.id, 20)
-      points_col = wrap_in_column(?* * s.points.to_i, 6)
-      name_col = wrap_in_column(s.name, 60)
+      #status_col = wrap_in_column(s.status, 10)
+      #id_col = wrap_in_column(s.id, 20)
+      #points_col = wrap_in_column(?* * s.points.to_i, 6)
+      name_col = wrap_in_column(s.name, 72)
+      name_col << ''
       tags_col = wrap_in_column(s.tags.sort * "\n", 30)
 
-      total = total_lines(status_col, id_col, points_col, name_col, tags_col)
+      name_labels = ['Name:']
+      #total = total_lines(status_col, id_col, points_col, name_col, tags_col)
+      #total = total_lines(id_col, name_col, tags_col)
+      total = total_lines(name_col, tags_col)
 
-      lines = Array.new(total).map{ " %-10s | %-20s | %-6s | %-60s | %-30s" }
+      lines = Array.new(total).map{ " | %5s | %-72s | %-s\n" }
 
-      output = lines.zip(status_col, id_col, points_col, name_col, tags_col).map{|r| sprintf(*r) } << format("%s\n",separator)
-
-      return output.join("\n")
-
-      sprintf(" %-10s | %-20s | %-6s | %-60s | %-s", s.status, s.id, ?* * s.points.to_i, s.name.slice(0,60), Array(s.tags).join(', '))
+      data = lines.zip(name_labels, name_col, tags_col)
+      # data.push([" ------ + %-72s +\n", ?- * 72])
+      data.push([" | File: | %-72s |\n", s.file])
+      data.map{|r| sprintf(*r) }.join
+      # data += separator
+      # data += format(" File: %s\n", s.file)
     end
 
     def stories
