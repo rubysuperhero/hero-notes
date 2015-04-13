@@ -49,7 +49,7 @@ module CliTasks
     end
 
     def extract_tags
-      @tags ||= data.scan(/(?<=(?<!\S)#)\w[\w\\]+/).sort # should match 'nothis #this #also/this/too'
+      @tags ||= data.scan(/(?<=(?<!\S)#)\w\S*/).sort # should match 'nothis #this #also/this/too'
     end
 
     def extract_metadata

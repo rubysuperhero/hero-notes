@@ -163,6 +163,21 @@ module CliTasks
         world.stories
       end
 
+      def tags(*tag_list)
+        puts if tag_list.any?
+          tag_list.flat_map do |tag|
+            stories_with_tag = world.stories.select{|n| n.tags.any?{|nt| nt[/^#{tag.strip}$/i] } }
+            next [] unless stories_with_tag.any?
+            [
+              '',
+              'TAG: %s' % tag,
+            ] + world.stories.select{|n| n.tags.include?(tag) }.map(&Viewer.method(:story))
+          end.join("\n")
+        else
+          world.stories.flat_map(&:tags).sort.uniq
+        end
+      end
+
       def list(*args)
         if args.any?
           Viewer.print *args

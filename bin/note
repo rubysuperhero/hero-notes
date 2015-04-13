@@ -104,6 +104,9 @@ module Hero
       when 'edit'
         CliTasks::Commands.edit *args
         CliTasks::Commands.rebuild
+      when 'tags'
+        CliTasks::Commands.rebuild
+        CliTasks::Commands.tags *args
       when 'search'
         if args.any?{|arg| arg == '-e' }
           CliTasks::Commands.edit *args.reject{|arg| arg == '-e' }
