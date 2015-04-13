@@ -3,3 +3,4 @@ stories/*
 !stories/index
 !stories/config.yml
 *.sw?
+mkmf.log
