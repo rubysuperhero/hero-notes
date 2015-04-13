@@ -93,7 +93,13 @@ module CliTasks
           Note.split NoteIO.read_file(arg)
         end
         notes += Note.split NoteIO.read_stdin(stdin)
-        notes.flatten.compact
+        collected = notes.flatten.compact
+        if collected.count == 0
+          f = Tempfile.new('tasks')
+          system ENV['EDITOR'] || 'vim', f.path
+          collected = Note.split NoteIO.read_file(f.path)
+        end
+        collected
       end
 
 #       def create(*args)
