@@ -7,16 +7,27 @@ module CliTasks
           files = %x{git status -s}.lines.map(&:chomp)
           files = files.map{|f| f.sub(/^.../, '').sub(/.* -> /, '') }
           files_changed = files.count
-          commit = %x{git commit -m '#{files_changed} files changed: #{files.join(', ')} @ #{Time.now.strftime('%Y-%m-%d %H:%M:%S %Z')}'}
-          puts_remote = %x{git push origin --all &>/dev/null}
+          csf = files.join(', ')
+          commit = %x{git commit -m '#{files_changed} files changed: #{csf.length > 140 ? csf[0,140] + '...' : csf} @ #{Time.now.strftime('%Y-%m-%d %H:%M:%S %Z')}'}
+          # puts_remote = %x{git push origin --all &>/dev/null}
         else
           addall = %x{git add --all}
           files = %x{git status -s}.lines.map(&:chomp)
           files = files.map{|f| f.sub(/^.../, '').sub(/.* -> /, '') }
           files_changed = files.count
-          commit = %x{git commit -m '#{files_changed} files changed: #{files.join(', ')} @ #{Time.now.strftime('%Y-%m-%d %H:%M:%S %Z')}'}
-          puts_remote = %x{git push origin --all &>/dev/null}
+          csf = files.join(', ')
+          commit = %x{git commit -m '#{files_changed} files changed: #{csf.length > 140 ? csf[0,140] + '...' : csf} @ #{Time.now.strftime('%Y-%m-%d %H:%M:%S %Z')}'}
+          # puts_remote = %x{git push origin --all &>/dev/null}
         end
+      end
+
+      def backup
+        %x{git push origin --all}
+      end
+
+      def commit_and_backup
+        commit
+        backup
       end
 
       def edit(*args)

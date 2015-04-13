@@ -114,6 +114,9 @@ module Hero
       when 'commit'
         CliTasks::Commands.commit
         return
+      when 'backup'
+        CliTasks::Commands.backup
+        return
       when 'test'
         return CliTasks::Commands.test args, $stdin
       when 'list'
@@ -121,7 +124,19 @@ module Hero
       else
         CliTasks::Commands.list *original_args
       end
-      CliTasks::Commands.commit
+
+      commit_file = File.join(CliTasks::Commands.world.task_path, 'commit_count')
+      IO.write(commit_file, 0) unless File.exist?(commit_file)
+      commit_count = IO.read(commit_file).to_i
+      IO.write(commit_file, commit_count + 1)
+      if commit_count % 10 == 0
+        puts
+        puts "There have been 10 commits since the last auto-backup.  Backup up notes now..."
+        CliTasks::Commands.commit_and_backup
+      else
+        CliTasks::Commands.commit
+      end
+
     end
 
   end
