@@ -23,6 +23,12 @@ module CliTasks
       @stories ||= []
     end
 
+    def avoid_editor?
+      return true if ENV.has_key? 'VIM'
+      return true unless $stdout.tty?
+      false
+    end
+
     def task_path
       '%s/.index' % path
     end
