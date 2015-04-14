@@ -2,6 +2,7 @@ module CliTasks
   class World
     include Singleton
     attr_writer :stories
+    attr_accessor :use_index
 
     def configuration
       @configuration ||= Configuration.instance.tap(&:load)
@@ -29,5 +30,16 @@ module CliTasks
     def path
       @path ||= config.path
     end
+  end
+
+  def self.world
+    World.instance.tap do |w|
+      Runner.run w.task_path
+      w.use_index ||= false
+    end
+  end
+
+  def self.stories
+    world.stories
   end
 end

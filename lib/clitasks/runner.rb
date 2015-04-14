@@ -1,8 +1,13 @@
 module CliTasks
   class Runner
-    def self.run(*files)
+    def self.run!(*files)
       world.reset
-      files.flat_map{|file|
+      run *files
+    end
+
+    def self.run(*files)
+      return world.stories if (world.stories || []).any?
+      ( files.any? ? files : [world.task_path] ).flat_map{|file|
         Dir[File.directory?(file) && [file,'/*.{s,}hdoc'].join || file]
       }.map{|file|
         begin
@@ -26,7 +31,7 @@ module CliTasks
         next if hide_note == true
         world.stories << note
         world.stories.last.file = file
-      }
+      }.tap{ Index.update }
     end
 
     def self.world

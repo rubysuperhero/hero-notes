@@ -4290,8 +4290,6 @@ vim-notes/ftplugin/notes.vim
 vim-notes/syntax/notes.vim
 
 
-ALL_TAGS:
-
 EPIC
 H
 accounts
@@ -4366,5 +4364,3 @@ user_id
 vim
 work
 zsh
-
-

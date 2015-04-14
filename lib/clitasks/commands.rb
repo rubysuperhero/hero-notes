@@ -156,7 +156,7 @@ module CliTasks
       end
 
       def world
-        @world ||= World.instance
+        @world ||= CliTasks.world
       end
 
       def stories
@@ -164,17 +164,32 @@ module CliTasks
       end
 
       def tags(*tag_list)
-        puts if tag_list.any?
-          tag_list.flat_map do |tag|
-            stories_with_tag = world.stories.select{|n| n.tags.any?{|nt| nt[/^#{tag.strip}$/i] } }
+        puts t = if tag_list.any?
+          tag_list.flat_map{|tag|
+            stories_with_tag = if world.use_index
+              stories = CliTasks.index['tags'][tag]
+              stories = stories.any? ? stories : CliTasks.index['tags'][tag.downcase]
+            else
+              world.stories.select{|n| n.tags.any?{|nt| nt[/^#{tag.strip}$/i] } }
+            end
+            # stories_with_tag = Index.tags[tag] # world.stories.select{|n| n.tags.any?{|nt| nt[/^#{tag.strip}$/i] } }
             next [] unless stories_with_tag.any?
             [
               '',
-              'TAG: %s' % tag,
-            ] + world.stories.select{|n| n.tags.include?(tag) }.map(&Viewer.method(:story))
-          end.join("\n")
+              Viewer.outer_separator,
+              '   TAG: %s' % tag,
+              Viewer.outer_separator,
+              world.stories.select{|n| n.tags.include?(tag) }.map(&Viewer.method(:story)).join(Viewer.separator),
+              Viewer.outer_separator,
+              '',
+            ]
+          }
         else
-          world.stories.flat_map(&:tags).sort.uniq
+          tags = if world.use_index
+            CliTasks.index['tags'].keys.sort
+          else
+            world.stories.flat_map(&:tags).sort.uniq
+          end
         end
       end
 

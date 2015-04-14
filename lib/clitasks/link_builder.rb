@@ -2,7 +2,7 @@ module CliTasks
   class LinkBuilder
     attr_reader :world
     def initialize
-      @world = World.instance
+      @world = CliTasks.world
       @path = @world.path
       Runner.run @world.task_path
     end

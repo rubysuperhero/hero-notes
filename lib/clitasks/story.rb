@@ -41,7 +41,7 @@ module CliTasks
   end
 
   def stories
-    World.instance.stories
+    CliTasks.world.stories
   end
 end
 

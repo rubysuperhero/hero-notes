@@ -12,6 +12,7 @@ if Dir['lib/clitasks.rb'].count > 0 && (Dir['.git'].count > 0 || ENV['CLIT_ENV']
   require './lib/clitasks/simple_dsl'      # $HOME/repos/hnotes/lib/clitasks/simple_dsl.rb
   require './lib/clitasks/story_reader'    # $HOME/repos/hnotes/lib/clitasks/story_reader.rb
   require './lib/clitasks/story'           # $HOME/repos/hnotes/lib/clitasks/story.rb
+  require './lib/clitasks/index'          # $HOME/repos/hnotes/lib/clitasks/runner.rb
   require './lib/clitasks/runner'          # $HOME/repos/hnotes/lib/clitasks/runner.rb
   require './lib/clitasks/link_builder'    # $HOME/repos/hnotes/lib/clitasks/link_builder.rb
   require './lib/clitasks/viewer'          # $HOME/repos/hnotes/lib/clitasks/viewer.rb
@@ -26,6 +27,7 @@ else
   require 'clitasks/simple_dsl'
   require 'clitasks/story_reader'
   require 'clitasks/story'
+  require 'clitasks/index'          # $HOME/repos/hnotes/lib/clitasks/runner.rb
   require 'clitasks/runner'
   require 'clitasks/link_builder'
   require 'clitasks/viewer'

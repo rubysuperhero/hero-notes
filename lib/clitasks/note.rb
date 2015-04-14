@@ -9,6 +9,13 @@ module CliTasks
         notes.map &Note.method(:new)
       end
 
+      def subset(*notes)
+        notes.flatten.flat_map do |note|
+          next note if note.is_a? Note
+          from_file note
+        end
+      end
+
       def from_string(data, name=nil)
         Note.new data, name
       end

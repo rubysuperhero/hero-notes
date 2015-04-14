@@ -1,15 +1,15 @@
 module CliTasks
   class ProjectFile
     class << self
-      def generate(path=World.instance.path, options={})
+      def generate(path=CliTasks.world.path, options={})
         new(path, options).tap(&:generate)
       end
 
-      def generate_and_open(path=World.instance.path, options={})
+      def generate_and_open(path=CliTasks.world.path, options={})
         new(path, options).tap(&:generate_and_open)
       end
 
-      def generate_and_print(path=World.instance.path, options={})
+      def generate_and_print(path=CliTasks.world.path, options={})
         new(path, options).tap(&:generate_and_print)
       end
     end
@@ -121,7 +121,7 @@ module CliTasks
     end
 
     def world
-      @world ||= World.instance
+      @world ||= CliTasks.world
     end
   end
 end

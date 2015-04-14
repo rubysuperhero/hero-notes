@@ -1,8 +1,9 @@
 module CliTasks
   class Index
     BASE_INDEX = {
-      'stories' => [
-      ],
+      'stories' => {
+        # story.file => story.data,
+      },
       'tags' => {
         # tag => story_array,
       }
@@ -15,10 +16,9 @@ module CliTasks
 
     def self.build
       world.stories.inject(BASE_INDEX.clone) do |index,story|
-        index['stories'] << story
+        index['stories'].merge!(story.file => story)
         story.tags.each do |tag|
           current_tag = index['tags'].fetch(tag, [])
-          current_tag << story
           index['tags'].merge!(tag => current_tag)
           if (downtag = tag.downcase) != tag
             current_tag = index['tags'].fetch(downtag, [])
@@ -41,7 +41,7 @@ module CliTasks
     end
 
     def self.world
-      @world ||= CliTasks.world
+      @world ||= World.instance
     end
   end
 
