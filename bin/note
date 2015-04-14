@@ -101,6 +101,8 @@ module Hero
       when 'add', 'a', 'new', 'n', 'create', 'c', 'import', 'i'
         CliTasks::Commands.create args, $stdin
         CliTasks::Commands.rebuild
+      when 'reindex'
+        CliTasks::Commands.reindex
       when 'rebuild'
         CliTasks::Commands.rebuild
       when 'edit'

@@ -2,6 +2,7 @@ module CliTasks
   class Commands
     class << self
       def commit(message='auto-saving notes')
+        reindex
         if $stdout.tty?
           addall = %x{git add --all}
           files = %x{git status -s}.lines.map(&:chomp)
@@ -19,6 +20,10 @@ module CliTasks
           commit = %x{git commit -m '#{files_changed} files changed: #{csf.length > 140 ? csf[0,140] + '...' : csf} @ #{Time.now.strftime('%Y-%m-%d %H:%M:%S %Z')}'}
           # puts_remote = %x{git push origin --all &>/dev/null}
         end
+      end
+
+      def reindex
+        Index.update
       end
 
       def backup

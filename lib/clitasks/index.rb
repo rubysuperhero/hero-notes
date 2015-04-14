@@ -18,9 +18,10 @@ module CliTasks
       world.stories.inject(BASE_INDEX.clone) do |index,story|
         index['stories'].merge!(story.file => story)
         story.tags.each do |tag|
+          tag = tag.to_s
           current_tag = index['tags'].fetch(tag, [])
           index['tags'].merge!(tag => current_tag)
-          if (downtag = tag.downcase) != tag
+          if (downtag = tag.downcase.to_s) != tag
             current_tag = index['tags'].fetch(downtag, [])
             current_tag << story
             index['tags'].merge!(downtag => current_tag)
