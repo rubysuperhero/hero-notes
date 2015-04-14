@@ -7,7 +7,7 @@ module CliTasks
 
     def self.run(*files)
       return world.stories if (world.stories || []).any?
-      ( files.any? ? files : [world.task_path] ).flat_map{|file|
+      ( files.any? ? files.flatten : [world.task_path].flatten ).flat_map{|file|
         Dir[File.directory?(file) && [file,'/*.{s,}hdoc'].join || file]
       }.map{|file|
         begin

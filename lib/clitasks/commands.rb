@@ -40,10 +40,21 @@ module CliTasks
       end
 
       def edit_files(*files)
-        if $stdout.tty?
-          system(ENV['EDITOR'] || 'vim', *(files.flatten))
-        else
-          puts 'not opening because stdout is not a terminal'
+        unless world.avoid_editor?
+          system(ENV['EDITOR'] || 'vim -O ', *(files.flatten))
+          return true
+        end
+
+        puts 'not opening because stdout is not a terminal or you are already in a vim session'
+        puts
+        files.flatten.each do |f|
+          printf "\n"
+          header = sprintf(" %s ", f)
+          printf "%s\n", header.gsub(/./, ?-)
+          printf "%s\n", header
+          printf "%s\n", header.gsub(/./, ?-)
+          puts IO.read(f)
+          puts
         end
       end
 
@@ -112,7 +123,7 @@ module CliTasks
         collected = notes.flatten.compact
         if collected.count == 0
           f = Tempfile.new('tasks')
-          system ENV['EDITOR'] || 'vim', f.path
+          system ENV['EDITOR'] || 'vim -O ', f.path
           collected = Note.split NoteIO.read_file(f.path)
         end
         collected

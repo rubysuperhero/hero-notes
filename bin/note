@@ -180,65 +180,6 @@ module Hero
 end
 # command = ARGV.shift || 'list'
 
-(timestamps ||= []) << Time.now.strftime('%Y-%m-%d %H:%M:%S %Z')
-
-benchmarks = Benchmark.measure do
-  Hero::NoteCommand.run
-end
-
-puts benchmarks unless benchmarks == nil
-
-puts
-puts
-
-(timestamps ||= []) << Time.now.strftime('%Y-%m-%d %H:%M:%S %Z')
-
-ap({:timestamps => timestamps}, index: true, raw: true, plain: false)
-
-# case command
-# when 'version'
-#   puts CliTasks::VERSION
-# when 'index'
-#   CliTasks::Commands.rebuild
-#   CliTasks::Commands.index
-# when 'rebuild'
-#   CliTasks::Commands.rebuild
-# when 'multi', 'many', 'mcreate'
-#   CliTasks::Commands.mcreate *ARGV
-#   CliTasks::Commands.rebuild
-# when 'create', 'new', 'add', 'c', 'n', 'a'
-#   CliTasks::Commands.create *ARGV
-#   CliTasks::Commands.rebuild
-# when 'edit'
-#   CliTasks::Commands.edit *ARGV
-#   CliTasks::Commands.rebuild
-# when 'search'
-#   if ARGV.any?{|arg| arg == '-e' }
-#     CliTasks::Commands.edit *ARGV.reject{|arg| arg == '-e' }
-#   else
-#     CliTasks::Commands.search *ARGV
-#   end
-#   CliTasks::Commands.rebuild
-# when 'import'
-#   if ARGV.any?
-#     tasks = IO.read(ARGV[0]).split(/\s*\n+\s*/)
-#     CliTasks::Commands.mcreate *tasks
-#     CliTasks::Commands.rebuild
-#   else
-#     f = Tempfile.new('tasks')
-#     system ENV['EDITOR'] || 'vim', f.path
-#     tasks = IO.read(f.path).split(/\s*\n+\s*/)
-#     CliTasks::Commands.mcreate *tasks
-#     CliTasks::Commands.rebuild
-#   end
-# when 'start'
-# when 'finish'
-# when 'tag'
-# when 'comment'
-# when 'list'
-#   CliTasks::Commands.list *ARGV
-# else
-#   CliTasks::Commands.list *ARGV.unshift(command)
-# end
+Hero::NoteCommand.run
 
 # vim: ft=ruby
