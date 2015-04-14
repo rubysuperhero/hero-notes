@@ -4211,6 +4211,7 @@ lib/clitasks.rb
 
 lib/clitasks/commands.rb
 lib/clitasks/configuration.rb
+lib/clitasks/index.rb
 lib/clitasks/link_builder.rb
 lib/clitasks/note.rb
 lib/clitasks/note_io.rb
