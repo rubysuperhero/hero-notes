@@ -204,11 +204,17 @@ module CliTasks
       private
 
       def grep(*args)
-        args.inject([world.task_path]){|files,arg|
-          #pp     "grep -ril '#{arg}' -- '#{files.join "' '"}'"
-          grep = `grep -ril '#{arg}' -- '#{files.join "' '"}'`
-          lines = grep.lines.map(&:chomp)
-        }
+        if world.use_index == true
+          args.inject(CliTasks::Index.read['stories']){|results,query|
+            results.select{|story| story.data =~ [/#{query.downcase}/i] }.tap{|x| 10.times{ puts "q: #{query}; story_data: #{results.first.data[0,20] rescue ''}... => FILE COUNT YES IDX #select #{x.count}" } }
+          }.map{|s| s.file }.tap{|files| 10.times{ puts "FILE COUNT WITH INDEX: #{files.count}" } }
+        else
+          args.inject([world.task_path]){|files,arg|
+            #pp     "grep -ril '#{arg}' -- '#{files.join "' '"}'"
+            grep = `grep -ril '#{arg}' -- '#{files.join "' '"}'`
+            lines = grep.lines.map(&:chomp).tap{|x| 10.times{ puts "FILE COUNT NO IDX #lines #{x.count}" } }
+          }.tap{|files| 10.times{ puts "FILE COUNT W/O INDEX: #{files.count}" } }
+        end
       end
 
       def checklog(msg, &block)

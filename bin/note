@@ -77,6 +77,8 @@ module Hero
 
       Dir.chdir(CliTasks::Commands.world.path)
 
+      CliTasks.world.use_index = args.shift == '-i' if args.first == '-i'
+
       case command
       when 'next_filename'
         puts CliTasks::Commands.next_filename
@@ -111,6 +113,8 @@ module Hero
         if args.any?{|arg| arg == '-e' }
           CliTasks::Commands.edit *args.reject{|arg| arg == '-e' }
         else
+          ap args: args, splatted: [ *args ]
+          return CliTasks::Commands.search *args
           CliTasks::Commands.search *args
         end
         CliTasks::Commands.rebuild
@@ -120,6 +124,34 @@ module Hero
       when 'backup'
         CliTasks::Commands.backup
         return
+      when 'tests'
+        label = ->(t) { puts; tt = sprintf("  %s:  ", t); puts tt; puts tt.gsub(/./, ?-); }
+
+#         label.call 'List Tags without Index'
+#         CliTasks.world.use_index = false
+#         puts Benchmark.measure{ CliTasks::Commands.tags }
+
+#         label.call 'List Tags with Index'
+#         CliTasks.world.use_index = true
+#         puts Benchmark.measure{ CliTasks::Commands.tags }
+
+#         label.call 'List EPIC Tag w/o index'
+#         CliTasks.world.use_index = false
+#         puts Benchmark.measure{ CliTasks::Commands.tags 'EPIC' }
+
+#         label.call 'List EPIC Tag w index'
+#         CliTasks.world.use_index = true
+#         puts Benchmark.measure{ CliTasks::Commands.tags 'EPIC' }
+
+        CliTasks::Commands.rebuild
+
+        label.call 'List EPIC Tag w index'
+        CliTasks.world.use_index = true
+        Benchmark.measure{ puts CliTasks::Commands.search(  *%w{ EPIC bea planning } ) }
+
+        label.call 'List EPIC Tag w/o index'
+        CliTasks.world.use_index = false
+        Benchmark.measure{ puts CliTasks::Commands.search(  *%w{ EPIC bea planning } ) }
       when 'test'
         return CliTasks::Commands.test args, $stdin
       when 'list'
@@ -146,7 +178,20 @@ module Hero
 end
 # command = ARGV.shift || 'list'
 
-Hero::NoteCommand.run
+(timestamps ||= []) << Time.now.strftime('%Y-%m-%d %H:%M:%S %Z')
+
+benchmarks = Benchmark.measure do
+  Hero::NoteCommand.run
+end
+
+puts benchmarks unless benchmarks == nil
+
+puts
+puts
+
+(timestamps ||= []) << Time.now.strftime('%Y-%m-%d %H:%M:%S %Z')
+
+ap({:timestamps => timestamps}, index: true, raw: true, plain: false)
 
 # case command
 # when 'version'
