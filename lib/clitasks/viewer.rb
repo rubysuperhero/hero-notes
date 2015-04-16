@@ -130,7 +130,11 @@ module CliTasks
     end
 
     def stories
-      @stories ||= CliTasks.world.stories
+      @stories ||= world.stories
+    end
+
+    def world
+      CliTasks.world
     end
   end
 end
