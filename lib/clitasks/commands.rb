@@ -35,27 +35,64 @@ module CliTasks
         backup
       end
 
-      def edit(*args)
-        edit_files grep(*args)
+      def editor
+        ed = ENV['EDITOR']
+        ed ||= 'vim -O'
+        ed[/^\s*vim\s*$/] ? 'vim -O' : ed
       end
 
-      def edit_files(*files)
+      def scratch
+        f = Tempfile.new('tasks')
+        open_in_editor! f.path
+        f.unlink
+        f.close
+      end
+
+      def edit(*args)
+        open_in_editor grep(*args)
+      end
+
+      def print_files(*files)
+        files.flatten.tap do |file_list|
+          file_list.each{|file| print_file file }
+        end
+      end
+
+      def print_file(f)
+        printf "\n"
+        header = sprintf(" %s ", f)
+        printf "%s\n", header.gsub(/./, ?-)
+        printf "%s\n", header
+        printf "%s\n", header.gsub(/./, ?-)
+        puts IO.read(f)
+        puts
+      end
+
+      def open_in_editor(*files)
         unless world.avoid_editor?
-          system(ENV['EDITOR'] || 'vim -O ', *(files.flatten))
-          return true
+          return open_in_editor!(*files)
         end
 
         puts 'not opening because stdout is not a terminal or you are already in a vim session'
         puts
-        files.flatten.each do |f|
-          printf "\n"
-          header = sprintf(" %s ", f)
-          printf "%s\n", header.gsub(/./, ?-)
-          printf "%s\n", header
-          printf "%s\n", header.gsub(/./, ?-)
-          puts IO.read(f)
-          puts
+        print_files *files
+      end
+
+      def open_in_editor!(*files)
+        files.flatten.tap do |file_list|
+          system(sprintf("%s %s", editor, files.flatten.join(" ")))
         end
+      end
+
+      def with_tempfile(prefix='notes')
+        tmpfile = tempfile
+        yield(tempfile) if block_given?
+        tempfile.unlink!
+        tempfile.close
+      end
+
+      def tempfile(prefix='notes')
+        Tempfile.new(prefix)
       end
 
       def search(*args)
@@ -79,7 +116,7 @@ module CliTasks
       end
 
       def mcreate(*tasks)
-        edit_files *(tasks.flat_map do|task|
+        open_in_editor *(tasks.flat_map do|task|
           next_filename.tap do |fn|
             write fn, task.data
           end
@@ -88,7 +125,7 @@ module CliTasks
 
       def create(args=ARGV, stdin=$stdin)
         files = save_to_disk collect(args, stdin)
-        edit_files *files
+        open_in_editor *files
       end
 
       def save(args=ARGV, stdin=$stdin)
@@ -123,7 +160,7 @@ module CliTasks
         collected = notes.flatten.compact
         if collected.count == 0
           f = Tempfile.new('tasks')
-          system ENV['EDITOR'] || 'vim -O ', f.path
+          system sprintf("%s %s", editor, f.path)
           collected = Note.split NoteIO.read_file(f.path)
         end
         collected
@@ -222,14 +259,14 @@ module CliTasks
       def grep(*args)
         if world.use_index == true
           args.inject(CliTasks::Index.read['stories']){|results,query|
-            results.select{|story| story.data =~ [/#{query.downcase}/i] }.tap{|x| 10.times{ puts "q: #{query}; story_data: #{results.first.data[0,20] rescue ''}... => FILE COUNT YES IDX #select #{x.count}" } }
-          }.map{|s| s.file }.tap{|files| 10.times{ puts "FILE COUNT WITH INDEX: #{files.count}" } }
+            results.select{|story| story.data =~ [/#{query.downcase}/i] }
+          }.map{|s| s.file }
         else
           args.inject([world.task_path]){|files,arg|
             #pp     "grep -ril '#{arg}' -- '#{files.join "' '"}'"
             grep = `grep -ril '#{arg}' -- '#{files.join "' '"}'`
-            lines = grep.lines.map(&:chomp).tap{|x| 10.times{ puts "FILE COUNT NO IDX #lines #{x.count}" } }
-          }.tap{|files| 10.times{ puts "FILE COUNT W/O INDEX: #{files.count}" } }
+            lines = grep.lines.map(&:chomp)
+          }
         end
       end
 
