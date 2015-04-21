@@ -51,9 +51,9 @@ module CliTasks
         [
           '',
           format(" |  TAG: | %s (%d)\n", group, grouped_stories.count),
-          lines.join(separator),
+          lines, #.join(separator),
           '',
-        ].join(outer_separator)
+        ] #.join(outer_separator)
       end
     end
 

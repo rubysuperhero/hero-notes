@@ -232,7 +232,7 @@ module CliTasks
               Viewer.outer_separator,
               '   TAG: %s' % tag,
               Viewer.outer_separator,
-              world.stories.select{|n| n.tags.include?(tag) }.map(&Viewer.method(:story)).join(Viewer.separator),
+              world.stories.select{|n| n.tags.include?(tag) }.map(&Viewer.method(:story)).join, #(Viewer.separator),
               Viewer.outer_separator,
               '',
             ]
