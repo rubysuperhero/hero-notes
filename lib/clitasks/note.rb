@@ -34,7 +34,7 @@ module CliTasks
       end
 
       def split(data='')
-        notes = (data || '').split(/(\A|\n)name:\s*|^---next.note---\n/i)
+        notes = (data || '').split(/(\A|\n)name:\s*|^---\s*next.note\s*---\n/i)
         notes.map do |str|
           from_string(str)
         end
