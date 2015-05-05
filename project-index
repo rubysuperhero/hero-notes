@@ -7882,3 +7882,1511 @@ vim-notes/ftplugin/notes.vim
 vim-notes/syntax/notes.vim
 
 
+
+
+Project Directory: /Users/macbookpro/repos/hnotes
+
+
+ |  TAG: | EPIC (8)
+
+ 142728579200  #EPIC bin/H index - generating a file index for a project including syntax highlight 
+
+ 142730380000  #EPIC create a new github project called anyproject #todo #projects                  
+
+ 142739363000  #EPIC #bea - Project Planning                                                        
+
+ 142742399600  #EPIC setup bin/H with all the known subcommands: project, note, etc #todo #tools #h 
+
+ 142765131700  #EPIC Cars Planning                                                                  
+
+ 142785240400  #EPIC Official Overview of Hero Components #hero #readme                             
+
+ 142786147700  #EPIC start another tech blog hosted @ blog.unixsuperhero.com #todo #hero #unixsuper 
+
+ 142787646500  #EPIC #superhero github repo and spin-off add-on repos, tagline: "give your shell su 
+
+
+
+ |  TAG: | H (5)
+
+ 142787667700  consider namespacing superhero extensions with "sh-" as in "sh-notes" #superhero #H  
+
+ 142728579200  #EPIC bin/H index - generating a file index for a project including syntax highlight 
+
+ 142751663600  if project dir has .git try using git ls-files to comply with .gitignore #hero #H #t 
+
+ 142760833100  reorganize the hnotes repo in a way that it can be executed (unix-style) by the H co 
+
+ 142760646100  #try reading stdin that comes from another ruby script using a lessthan file redirec 
+
+
+
+ |  TAG: | accounts (3)
+
+ 142778594700  #accounts jearsh.thinkup.com jearsh@gmail.com:[formula] #passwords                   
+
+ 142860748000  #accounts #work #bea production users. email => josh+{vendor,admin}@getbeautified.co 
+
+ 142963529200  #accounts #passwords Smile Templates - Microsoft Word/Office Templates               
+
+
+
+ |  TAG: | android (1)
+
+ 142821594000  #link customize everything in #android for my #phone #oneplus http://android.appstor 
+
+
+
+ |  TAG: | at/10:30am (1)
+
+ 142888546001  #todo create a new, special notation for #hero #notes that creates reminders and not 
+
+
+
+ |  TAG: | at/10am (1)
+
+ 142888546001  #todo create a new, special notation for #hero #notes that creates reminders and not 
+
+
+
+ |  TAG: | bash (1)
+
+ 142714881400  #todo find  #reddit subreddits for #shell #command-line #bash or #zsh #productivity  
+
+
+
+ |  TAG: | bea (22)
+
+ 142860748000  #accounts #work #bea production users. email => josh+{vendor,admin}@getbeautified.co 
+
+ 142965808700  #bea #connect #work #branches #branchlist feature/connect-ajax-and-views for refacto 
+
+ 142974638600  2015-04-22 #bea #checklist #doing                                                    
+
+ 142861725700  #bea #connect #planning Connect - overall and specific bugs                          
+
+ 142903954900  #bea #work #ruby #rails add an API subclass to Snippet (lib/snippet.rb) -- could be  
+
+ 142942779400  #bea converting assoc for loc/services to has_many :through #todo #scratch           
+
+ 142895015800  #bea #work #connect ideas for mitigating connect bugs                                
+
+ 142947526300  #bea #jira updates to make                                                           
+
+ 142861893300  #bea #work #todo #research what does the x-content-type-options http header do - esp 
+
+ 142802858400  connect is not saving offers or appointments for mindbody.  - check algorithm flow ( 
+
+ 142913400600  eliminate the old loc/serv join table in favor of has_many through :locations_servic 
+
+ 142739363000  #EPIC #bea - Project Planning                                                        
+
+ 142903400000  instead of using tbg to copy the user/pass to the clipboard - use js to set the valu 
+
+ 142957256500  make a list and convert connect's popup-related ajax calls to jquery and let rails b 
+
+ 142901627300  #planning #bea Beautified Connect and more... Week of April 13th                     
+
+ 142965755400  separate all the js files in connect/firefox/* into 1 file per big object or logical 
+
+ 142960255800  start extracting the popup html into haml views #bea #todo #jira #work               
+
+ 142963079800  #standup rough draft for apr 21st 2015 #bea #work                                    
+
+ 142917378301  #todo for #bea tonight -- #urgent #tasks #planning                                   
+
+ 142909913601  tasks and notes for week of April 13th #bea #todo #tasks #planning                   
+
+ 142956177500  write scripts to update dev/staging after merging into master (details below) #todo  
+
+ 142861884800  #work #bea #todo #research content-security-policy headers that facebook uses to res 
+
+
+
+ |  TAG: | bin (1)
+
+ 142862278300  #todo #env #tools create a #bin with the sole purpose of making a horizontal split i 
+
+
+
+ |  TAG: | branches (1)
+
+ 142965808700  #bea #connect #work #branches #branchlist feature/connect-ajax-and-views for refacto 
+
+
+
+ |  TAG: | branchlist (1)
+
+ 142965808700  #bea #connect #work #branches #branchlist feature/connect-ajax-and-views for refacto 
+
+
+
+ |  TAG: | budget (1)
+
+ 142845129900  #budget for the week of April 7th, 2015                                              
+
+
+
+ |  TAG: | bug (1)
+
+ 142723640200  either create files with unix line endings or parse them so non-unix do not break fo 
+
+
+
+ |  TAG: | bugs (1)
+
+ 142802858400  connect is not saving offers or appointments for mindbody.  - check algorithm flow ( 
+
+
+
+ |  TAG: | cars (1)
+
+ 142765131700  #EPIC Cars Planning                                                                  
+
+
+
+ |  TAG: | checklist (1)
+
+ 142974638600  2015-04-22 #bea #checklist #doing                                                    
+
+
+
+ |  TAG: | code (3)
+
+ 142909913600  create a StatusObject class based on the data in a database table #todo #code #ruby  
+
+ 142895793500  #reference Local and Remote Git Repos #code #projects #git                           
+
+ 143081303400  #todo #research the State Machine design pattern, is it similar to the values object 
+
+
+
+ |  TAG: | command-line (1)
+
+ 142714881400  #todo find  #reddit subreddits for #shell #command-line #bash or #zsh #productivity  
+
+
+
+ |  TAG: | connect (6)
+
+ 142861725700  #bea #connect #planning Connect - overall and specific bugs                          
+
+ 142895015800  #bea #work #connect ideas for mitigating connect bugs                                
+
+ 142965808700  #bea #connect #work #branches #branchlist feature/connect-ajax-and-views for refacto 
+
+ 142903400000  instead of using tbg to copy the user/pass to the clipboard - use js to set the valu 
+
+ 142957256500  make a list and convert connect's popup-related ajax calls to jquery and let rails b 
+
+ 142965755400  separate all the js files in connect/firefox/* into 1 file per big object or logical 
+
+
+
+ |  TAG: | datetime/20150412203604 (1)
+
+ 142888546001  #todo create a new, special notation for #hero #notes that creates reminders and not 
+
+
+
+ |  TAG: | docs (2)
+
+ 142898828800  create a micro-document format (whatever haml is to html, sass to css, etc.) for qui 
+
+ 142768090400  extract cars/lib/*_status.rb into something like hero-docs/rails/patterns/status_ids 
+
+
+
+ |  TAG: | docs: (1)
+
+ 142785212600  official name of #hero #docs: #hero-man aka hero manual                              
+
+
+
+ |  TAG: | doing (1)
+
+ 142974638600  2015-04-22 #bea #checklist #doing                                                    
+
+
+
+ |  TAG: | env (3)
+
+ 142722862000  convert def into a bin/ and use it to source files too, creating an index of aliases 
+
+ 142733300700  steal vim-fugitive's . mapping in gstatus to use with project files #todo #hero #env 
+
+ 142862278300  #todo #env #tools create a #bin with the sole purpose of making a horizontal split i 
+
+
+
+ |  TAG: | experiment (2)
+
+ 142760646100  #try reading stdin that comes from another ruby script using a lessthan file redirec 
+
+ 142760684700  #try writing an #experiment where the text that is puts(ed) is obviously different d 
+
+
+
+ |  TAG: | feature (1)
+
+ 142743035300  test super long key mapping '<leader>Hns' to save a new note #notes #hero #feature   
+
+
+
+ |  TAG: | food (1)
+
+ 143084533100  #ref #reference top china order #restaurant #food #menulunch = {  # chk, shrmp, 
+
+
+
+ |  TAG: | formatting (1)
+
+ 142911259300  #git log placeholders #reference #ref #formatting #git-log                           
+
+
+
+ |  TAG: | gift (4)
+
+ 142839384200  #gift jonathan wants the steamers for vegetables                                     
+
+ 142839384201  #gift imagine dragons tickets for dad's birthday                                     
+
+ 142839384202  #gift jade wants a penny board the link is in the description                        
+
+ 142845137800  #gift for aunt darlene and uncle ivan                                                
+
+
+
+ |  TAG: | git (9)
+
+ 142729194000  create a tool for tagging a commit as having technical debt (format: debt-<pk>)      
+
+ 142787646500  #EPIC #superhero github repo and spin-off add-on repos, tagline: "give your shell su 
+
+ 142911259300  #git log placeholders #reference #ref #formatting #git-log                           
+
+ 142895793500  #reference Local and Remote Git Repos #code #projects #git                           
+
+ 142781646000  setup a pre-commit #git hook for #notes that does the following #todo #hero          
+
+ 142835651700  #todo #research using a #git config to push to multiple remotes (but different desti 
+
+ 142917378303  #try having 2 directories for the same repo, but share a .git/refs folder (symlink)  
+
+ 142914709000  #vim #todo write command abbrevs for jumping to the next #git conflict marker        
+
+ 142956177500  write scripts to update dev/staging after merging into master (details below) #todo  
+
+
+
+ |  TAG: | git-log (1)
+
+ 142911259300  #git log placeholders #reference #ref #formatting #git-log                           
+
+
+
+ |  TAG: | google (3)
+
+ 142742252900  #google bitbucket command-line tools #todo #google #research                         
+
+ 142742252900  #google bitbucket command-line tools #todo #google #research                         
+
+ 142785774100  #research how to make a self-contained executable ruby script #todo #google #ruby #h 
+
+
+
+ |  TAG: | h-ssh (1)
+
+ 142835815400  #h-ssh subcommands for doing all of the following ssh-related actions #hero #herocmd 
+
+
+
+ |  TAG: | hcmd (14)
+
+ 142787667700  consider namespacing superhero extensions with "sh-" as in "sh-notes" #superhero #H  
+
+ 142835787200  create an h-ssh #herocmd plugin with templates for the project file and add .ssh/con 
+
+ 142835815400  #h-ssh subcommands for doing all of the following ssh-related actions #hero #herocmd 
+
+ 143086605300  #hero #hcmd #todo the project subcommand should have common, but official documents  
+
+ 142851355900  make ~/hero/bin/ and add it to $PATH.  this should be used for 3rd party #hcmd exten 
+
+ 142851344700  new #hcmd subcommand rip/dl for accessing all my rippers like rip_video, manga{here, 
+
+ 142931528300  outline the class structure of a basic #hcmd                                         
+
+ 142896008800  #todo #hero #hcmd search for 3rd party subcommands from left-to-right until the firs 
+
+ 142851344702  #todo setup either a `new` #hcmd subcommand or `template` subcommand for working on  
+
+ 142851117900  #todo #hero #hcmd 3rd party subcommands only need 1 level of namespacing (e.g. `h no 
+
+ 142896008900  #todo #hero #hcmd should have a method on the Base class for HeroCommandBase#subcomm 
+
+ 142896242500  #todo #hero #hcmd HeroCommandBase should also have a method for aliased subcommands  
+
+ 142851344701  #try `$stdout.puts($stdin.read)` when passing std i/o from from one #hcmd to another 
+
+ 142851344703  #todo setup an `experiment` #hcmd subcommand for creating a new experiment file.  us 
+
+
+
+ |  TAG: | hero (82)
+
+ 142912253000  add git subcommand for #notes that just passes the rest of the args to git, but sinc 
+
+ 142743021100  approach hero training/hero docs more like a narrative of how i work on a project or 
+
+ 142722862000  convert def into a bin/ and use it to source files too, creating an index of aliases 
+
+ 142729194000  create a tool for tagging a commit as having technical debt (format: debt-<pk>)      
+
+ 142835787200  create an h-ssh #herocmd plugin with templates for the project file and add .ssh/con 
+
+ 142837859500  change the #notes list subcommand to group stories by tag, so it looks something lik 
+
+ 142923403506  compact list of #hero #notes -- single line for each note                            
+
+ 142899218400  change #hero #notes <leader>hns key mapping in #vim so that it writes the lines to a 
+
+ 142742247400  change the note file ext to .hdoc and .shdoc for encrypted/secure notes/tasks (see d 
+
+ 142742978900  create a mapping for `:.!note save` and `:'<,'>!note save` #notes #todo #vim #hero   
+
+ 142743113900  designate a specific delimiter for importing a single file but splitting it into mul 
+
+ 142742399600  #EPIC setup bin/H with all the known subcommands: project, note, etc #todo #tools #h 
+
+ 142768090400  extract cars/lib/*_status.rb into something like hero-docs/rails/patterns/status_ids 
+
+ 142751635400  experiment with multi-line formatting for each note when listing (see Transmission,  
+
+ 142787646500  #EPIC #superhero github repo and spin-off add-on repos, tagline: "give your shell su 
+
+ 142728579200  #EPIC bin/H index - generating a file index for a project including syntax highlight 
+
+ 142741841000  expand on the idea of a project file.  allow custom generators #hero #todo #projectf 
+
+ 142786147700  #EPIC start another tech blog hosted @ blog.unixsuperhero.com #todo #hero #unixsuper 
+
+ 142785240400  #EPIC Official Overview of Hero Components #hero #readme                             
+
+ 142898986300  #hero #notes make new methods for Runner so that #run does not automatically populat 
+
+ 143081303501  #hero #notes for the vim mappings that create a file in /tmp, create it in the hero/ 
+
+ 143018649700  #hero #notes #research #todo #ruby 2-way encryption so that notes can be encrypted e 
+
+ 142896216800  #hero #notes #todo add syntax for comments - lines ignored, not parsed or saved, by  
+
+ 142923403504  #hero #projects #index - list of projects that make-up the Superhero system          
+
+ 142863326700  #hero #template #todo #tools for bin/accepts-3rd-party-subcommands which is just lik 
+
+ 143018741200  #hero #pages #todo write something akin to the ruby koans (terse - effectively conci 
+
+ 142835815400  #h-ssh subcommands for doing all of the following ssh-related actions #hero #herocmd 
+
+ 143081303500  #hero #notes consider using a separate command for parsing subcommands to ultimately 
+
+ 142927988000  #hero commands that accept subcommands should accept the "alias" subcommand by defau 
+
+ 142923403505  #hero #tools #index #ref #official list of #hero #tools                              
+
+ 142923403505  #hero #tools #index #ref #official list of #hero #tools                              
+
+ 143086605300  #hero #hcmd #todo the project subcommand should have common, but official documents  
+
+ 142751663600  if project dir has .git try using git ls-files to comply with .gitignore #hero #H #t 
+
+ 142899100900  instead of #notes being one big command, extract everything into 3rd party subcmds l 
+
+ 142923403500  if making different types of #hero #notes make an official or index type that groups 
+
+ 142742919400  include note details (output of 'note list') in the project-index file #notes #todo  
+
+ 142743053600  make a note subcommand for just printing the next available filename to use wih a vi 
+
+ 142899295900  make a vim mapping for running `note import` in a bg tmux window #hero #notes #todo  
+
+ 142835759500  #man-hero #hero file explaining ssh config to setup a specific "host" with a specifi 
+
+ 142729231300  make sure pwd is correct before auto-saving #notes #todo #hero                       
+
+ 142928024300  #notes subcommand that automatically tags the notes as incomplete, partial, or fragm 
+
+ 142741935000  note subcommand to just print an index instead of opening it in vim #notes #todo #he 
+
+ 142851344700  new #hcmd subcommand rip/dl for accessing all my rippers like rip_video, manga{here, 
+
+ 142845144200  #notes #todo think about using some kind of @category notation for namespacing all t 
+
+ 142752059500  new subcmd: example that opens a demo note using most of the document format's featu 
+
+ 142741982000  open lib/clitasks/commands.rb when using the note -e subcommand #notes #todo #hero   
+
+ 142785212600  official name of #hero #docs: #hero-man aka hero manual                              
+
+ 142723710300  pick a new file extension for notes, they aren't ruby files anymore #notes #todo #he 
+
+ 142742973400  re-namespace hero notes from clitasks to hero/note(s) and move into the project with 
+
+ 142760833100  reorganize the hnotes repo in a way that it can be executed (unix-style) by the H co 
+
+ 142785774100  #research how to make a self-contained executable ruby script #todo #google #ruby #h 
+
+ 142781636000  #refactor tags to use config files for all tagged items #hero #tags #todo            
+
+ 142781543400  rippers save files in a subfolder with a config that will allow me to run "H rip all 
+
+ 142781646000  setup a pre-commit #git hook for #notes that does the following #todo #hero          
+
+ 142965764000  start splitting bin/note into separate commands starting with the easiest stuff: not 
+
+ 142733300700  steal vim-fugitive's . mapping in gstatus to use with project files #todo #hero #env 
+
+ 142751617200  show relative and abs note path for note list #notes #hero #todo                     
+
+ 142917378300  #todo add priorities to #notes #hero                                                 
+
+ 142896242500  #todo #hero #hcmd HeroCommandBase should also have a method for aliased subcommands  
+
+ 142851344701  #try `$stdout.puts($stdin.read)` when passing std i/o from from one #hcmd to another 
+
+ 142760646100  #try reading stdin that comes from another ruby script using a lessthan file redirec 
+
+ 142896203400  #todo #hero subcommand or commands as bookmarks/website shortcuts (e.g. H web bb # = 
+
+ 142837790700  #todo add a tag subcommand for #hero #notes to do many things -- see description for 
+
+ 142790664800  #todo #hero #tools #research ruby cli options for specifying extra lib dirs when run 
+
+ 143061664400  #try using backslashes in a tempfile's prefix to see if it creates the tempfile in a 
+
+ 142896008900  #todo #hero #hcmd should have a method on the Base class for HeroCommandBase#subcomm 
+
+ 142896008800  #todo #hero #hcmd search for 3rd party subcommands from left-to-right until the firs 
+
+ 142741962000  the project file for note's -e cmd should not be a tempfile #notes #hero #todo       
+
+ 142923403507  try making a #vim #mapping that only needs a timestamp to find the note file #hero # 
+
+ 142923403508  try making a #vim #mapping to create buffer windows with similar notes, (misc. purpo 
+
+ 142895843600  #todo #hero subcommand for the bin subcommand that checks for the existence of the g 
+
+ 143085680200  #todo for hero.dev/google - create multiple iframes preloaded with the top links, se 
+
+ 142938842500  #todo #vim #tip to refactor an extracted method, use these highlights to identify lo 
+
+ 142888546001  #todo create a new, special notation for #hero #notes that creates reminders and not 
+
+ 142733395600  testing my chdir/editbin changes to bin/note #todo #try #hero                        
+
+ 142851117900  #todo #hero #hcmd 3rd party subcommands only need 1 level of namespacing (e.g. `h no 
+
+ 143061657300  #todo #hero #notes should use tempfiles with more descriptive names (notes-import, n 
+
+ 142743035300  test super long key mapping '<leader>Hns' to save a new note #notes #hero #feature   
+
+ 142741988400  use system() instead of backticks to git commit to reduce output just use the return 
+
+ 142837788700  use git hooks to create a search index for #hero #notes #todo                        
+
+ 142890977100  users can add headers/footers to project file and it won't be overwritten when rebui 
+
+ 142742334600  when a project file is generated, add it's absolute path a "projects" file in the ho 
+
+
+
+ |  TAG: | hero-docs (1)
+
+ 142743021100  approach hero training/hero docs more like a narrative of how i work on a project or 
+
+
+
+ |  TAG: | hero-man (1)
+
+ 142785212600  official name of #hero #docs: #hero-man aka hero manual                              
+
+
+
+ |  TAG: | hero-training (1)
+
+ 142743021100  approach hero training/hero docs more like a narrative of how i work on a project or 
+
+
+
+ |  TAG: | herocmd (2)
+
+ 142835787200  create an h-ssh #herocmd plugin with templates for the project file and add .ssh/con 
+
+ 142835815400  #h-ssh subcommands for doing all of the following ssh-related actions #hero #herocmd 
+
+
+
+ |  TAG: | idea (1)
+
+ 142853692500  #idea online banking as more of a money management app #todo #projects               
+
+
+
+ |  TAG: | index (2)
+
+ 142923403504  #hero #projects #index - list of projects that make-up the Superhero system          
+
+ 142923403505  #hero #tools #index #ref #official list of #hero #tools                              
+
+
+
+ |  TAG: | javascript (1)
+
+ 142895158500  #try #javascript #js experimenting with which values and data types respond to the l 
+
+
+
+ |  TAG: | jira (2)
+
+ 142947526300  #bea #jira updates to make                                                           
+
+ 142960255800  start extracting the popup html into haml views #bea #todo #jira #work               
+
+
+
+ |  TAG: | jrap (1)
+
+ 143018755400  #jrap #lyrics                                                                        
+
+
+
+ |  TAG: | js (1)
+
+ 142895158500  #try #javascript #js experimenting with which values and data types respond to the l 
+
+
+
+ |  TAG: | link (1)
+
+ 142821594000  #link customize everything in #android for my #phone #oneplus http://android.appstor 
+
+
+
+ |  TAG: | lyrics (1)
+
+ 143018755400  #jrap #lyrics                                                                        
+
+
+
+ |  TAG: | man-hero (2)
+
+ 142835787200  create an h-ssh #herocmd plugin with templates for the project file and add .ssh/con 
+
+ 142835759500  #man-hero #hero file explaining ssh config to setup a specific "host" with a specifi 
+
+
+
+ |  TAG: | manpages (1)
+
+ 142898828800  create a micro-document format (whatever haml is to html, sass to css, etc.) for qui 
+
+
+
+ |  TAG: | mapping (3)
+
+ 142923403508  try making a #vim #mapping to create buffer windows with similar notes, (misc. purpo 
+
+ 142923403507  try making a #vim #mapping that only needs a timestamp to find the note file #hero # 
+
+ 142923403502  #vim #mapping to turn the word under the cursor (<cword>) into a hashtag #todo       
+
+
+
+ |  TAG: | menu (1)
+
+ 143084533100  #ref #reference top china order #restaurant #food #menulunch = {  # chk, shrmp, 
+
+
+
+ |  TAG: | notes (46)
+
+ 142912253000  add git subcommand for #notes that just passes the rest of the args to git, but sinc 
+
+ 142899218400  change #hero #notes <leader>hns key mapping in #vim so that it writes the lines to a 
+
+ 142837859500  change the #notes list subcommand to group stories by tag, so it looks something lik 
+
+ 142923403506  compact list of #hero #notes -- single line for each note                            
+
+ 142742978900  create a mapping for `:.!note save` and `:'<,'>!note save` #notes #todo #vim #hero   
+
+ 142742247400  change the note file ext to .hdoc and .shdoc for encrypted/secure notes/tasks (see d 
+
+ 142743113900  designate a specific delimiter for importing a single file but splitting it into mul 
+
+ 142723640200  either create files with unix line endings or parse them so non-unix do not break fo 
+
+ 142751635400  experiment with multi-line formatting for each note when listing (see Transmission,  
+
+ 143018649700  #hero #notes #research #todo #ruby 2-way encryption so that notes can be encrypted e 
+
+ 143081303500  #hero #notes consider using a separate command for parsing subcommands to ultimately 
+
+ 142898986300  #hero #notes make new methods for Runner so that #run does not automatically populat 
+
+ 143081303501  #hero #notes for the vim mappings that create a file in /tmp, create it in the hero/ 
+
+ 142896216800  #hero #notes #todo add syntax for comments - lines ignored, not parsed or saved, by  
+
+ 142899100900  instead of #notes being one big command, extract everything into 3rd party subcmds l 
+
+ 142742919400  include note details (output of 'note list') in the project-index file #notes #todo  
+
+ 142923403500  if making different types of #hero #notes make an official or index type that groups 
+
+ 142743053600  make a note subcommand for just printing the next available filename to use wih a vi 
+
+ 142899295900  make a vim mapping for running `note import` in a bg tmux window #hero #notes #todo  
+
+ 142729231300  make sure pwd is correct before auto-saving #notes #todo #hero                       
+
+ 142741935000  note subcommand to just print an index instead of opening it in vim #notes #todo #he 
+
+ 142752059500  new subcmd: example that opens a demo note using most of the document format's featu 
+
+ 142928024300  #notes subcommand that automatically tags the notes as incomplete, partial, or fragm 
+
+ 142845144200  #notes #todo think about using some kind of @category notation for namespacing all t 
+
+ 142741982000  open lib/clitasks/commands.rb when using the note -e subcommand #notes #todo #hero   
+
+ 142723710300  pick a new file extension for notes, they aren't ruby files anymore #notes #todo #he 
+
+ 142760833100  reorganize the hnotes repo in a way that it can be executed (unix-style) by the H co 
+
+ 142742973400  re-namespace hero notes from clitasks to hero/note(s) and move into the project with 
+
+ 142781646000  setup a pre-commit #git hook for #notes that does the following #todo #hero          
+
+ 142965764000  start splitting bin/note into separate commands starting with the easiest stuff: not 
+
+ 142928011600  setup 2 rebuild subcommands (or 1 cmd with options) one that blocks and one that reb 
+
+ 142751617200  show relative and abs note path for note list #notes #hero #todo                     
+
+ 142888546001  #todo create a new, special notation for #hero #notes that creates reminders and not 
+
+ 143061657300  #todo #hero #notes should use tempfiles with more descriptive names (notes-import, n 
+
+ 142728658500  #try checking STDOUT.tty? in #notes for cmds like index to see if output is          
+
+ 143061664400  #try using backslashes in a tempfile's prefix to see if it creates the tempfile in a 
+
+ 142923403507  try making a #vim #mapping that only needs a timestamp to find the note file #hero # 
+
+ 142923403508  try making a #vim #mapping to create buffer windows with similar notes, (misc. purpo 
+
+ 142785379700  test pandoc markdown syntax (definition lists, etc.) based on the docs below #try #n 
+
+ 142837790700  #todo add a tag subcommand for #hero #notes to do many things -- see description for 
+
+ 142741962000  the project file for note's -e cmd should not be a tempfile #notes #hero #todo       
+
+ 142743035300  test super long key mapping '<leader>Hns' to save a new note #notes #hero #feature   
+
+ 142917378300  #todo add priorities to #notes #hero                                                 
+
+ 142890977100  users can add headers/footers to project file and it won't be overwritten when rebui 
+
+ 142741988400  use system() instead of backticks to git commit to reduce output just use the return 
+
+ 142837788700  use git hooks to create a search index for #hero #notes #todo                        
+
+
+
+ |  TAG: | official (1)
+
+ 142923403505  #hero #tools #index #ref #official list of #hero #tools                              
+
+
+
+ |  TAG: | oneplus (1)
+
+ 142821594000  #link customize everything in #android for my #phone #oneplus http://android.appstor 
+
+
+
+ |  TAG: | pages (2)
+
+ 143018741200  #hero #pages #todo write something akin to the ruby koans (terse - effectively conci 
+
+ 142938842500  #todo #vim #tip to refactor an extracted method, use these highlights to identify lo 
+
+
+
+ |  TAG: | passwords (2)
+
+ 142778594700  #accounts jearsh.thinkup.com jearsh@gmail.com:[formula] #passwords                   
+
+ 142963529200  #accounts #passwords Smile Templates - Microsoft Word/Office Templates               
+
+
+
+ |  TAG: | phone (1)
+
+ 142821594000  #link customize everything in #android for my #phone #oneplus http://android.appstor 
+
+
+
+ |  TAG: | planning (4)
+
+ 142861725700  #bea #connect #planning Connect - overall and specific bugs                          
+
+ 142901627300  #planning #bea Beautified Connect and more... Week of April 13th                     
+
+ 142909913601  tasks and notes for week of April 13th #bea #todo #tasks #planning                   
+
+ 142917378301  #todo for #bea tonight -- #urgent #tasks #planning                                   
+
+
+
+ |  TAG: | productivity (1)
+
+ 142714881400  #todo find  #reddit subreddits for #shell #command-line #bash or #zsh #productivity  
+
+
+
+ |  TAG: | projectfile (4)
+
+ 142741841000  expand on the idea of a project file.  allow custom generators #hero #todo #projectf 
+
+ 142742919400  include note details (output of 'note list') in the project-index file #notes #todo  
+
+ 142751663600  if project dir has .git try using git ls-files to comply with .gitignore #hero #H #t 
+
+ 142742334600  when a project file is generated, add it's absolute path a "projects" file in the ho 
+
+
+
+ |  TAG: | projects (5)
+
+ 142898828800  create a micro-document format (whatever haml is to html, sass to css, etc.) for qui 
+
+ 142730380000  #EPIC create a new github project called anyproject #todo #projects                  
+
+ 142923403504  #hero #projects #index - list of projects that make-up the Superhero system          
+
+ 142853692500  #idea online banking as more of a money management app #todo #projects               
+
+ 142895793500  #reference Local and Remote Git Repos #code #projects #git                           
+
+
+
+ |  TAG: | rails (4)
+
+ 142903954900  #bea #work #ruby #rails add an API subclass to Snippet (lib/snippet.rb) -- could be  
+
+ 142909913600  create a StatusObject class based on the data in a database table #todo #code #ruby  
+
+ 142768090400  extract cars/lib/*_status.rb into something like hero-docs/rails/patterns/status_ids 
+
+ 143085680200  #todo for hero.dev/google - create multiple iframes preloaded with the top links, se 
+
+
+
+ |  TAG: | ray (1)
+
+ 142765131700  #EPIC Cars Planning                                                                  
+
+
+
+ |  TAG: | readme (1)
+
+ 142785240400  #EPIC Official Overview of Hero Components #hero #readme                             
+
+
+
+ |  TAG: | reddit (1)
+
+ 142714881400  #todo find  #reddit subreddits for #shell #command-line #bash or #zsh #productivity  
+
+
+
+ |  TAG: | ref (3)
+
+ 142911259300  #git log placeholders #reference #ref #formatting #git-log                           
+
+ 142923403505  #hero #tools #index #ref #official list of #hero #tools                              
+
+ 143084533100  #ref #reference top china order #restaurant #food #menulunch = {  # chk, shrmp, 
+
+
+
+ |  TAG: | refactor (1)
+
+ 142781636000  #refactor tags to use config files for all tagged items #hero #tags #todo            
+
+
+
+ |  TAG: | reference (3)
+
+ 142911259300  #git log placeholders #reference #ref #formatting #git-log                           
+
+ 142895793500  #reference Local and Remote Git Repos #code #projects #git                           
+
+ 143084533100  #ref #reference top china order #restaurant #food #menulunch = {  # chk, shrmp, 
+
+
+
+ |  TAG: | remind (1)
+
+ 142888546001  #todo create a new, special notation for #hero #notes that creates reminders and not 
+
+
+
+ |  TAG: | remind/at (1)
+
+ 142888546001  #todo create a new, special notation for #hero #notes that creates reminders and not 
+
+
+
+ |  TAG: | remind/every (1)
+
+ 142888546001  #todo create a new, special notation for #hero #notes that creates reminders and not 
+
+
+
+ |  TAG: | remind/on (1)
+
+ 142888546001  #todo create a new, special notation for #hero #notes that creates reminders and not 
+
+
+
+ |  TAG: | reminder (1)
+
+ 142888546001  #todo create a new, special notation for #hero #notes that creates reminders and not 
+
+
+
+ |  TAG: | research (11)
+
+ 142861893300  #bea #work #todo #research what does the x-content-type-options http header do - esp 
+
+ 142742252900  #google bitbucket command-line tools #todo #google #research                         
+
+ 143018649700  #hero #notes #research #todo #ruby 2-way encryption so that notes can be encrypted e 
+
+ 142923403501  #research keeping a #vim split at a fixed size and position                          
+
+ 142785774100  #research how to make a self-contained executable ruby script #todo #google #ruby #h 
+
+ 142721780001  #research how to use the yankring vim plugin #vim #todo                              
+
+ 142923403503  #research how fasd or prezto can `cd` from a script and stay there #try experiments  
+
+ 142790664800  #todo #hero #tools #research ruby cli options for specifying extra lib dirs when run 
+
+ 142835651700  #todo #research using a #git config to push to multiple remotes (but different desti 
+
+ 143081303400  #todo #research the State Machine design pattern, is it similar to the values object 
+
+ 142861884800  #work #bea #todo #research content-security-policy headers that facebook uses to res 
+
+
+
+ |  TAG: | restaurant (1)
+
+ 143084533100  #ref #reference top china order #restaurant #food #menulunch = {  # chk, shrmp, 
+
+
+
+ |  TAG: | rip (1)
+
+ 142851344700  new #hcmd subcommand rip/dl for accessing all my rippers like rip_video, manga{here, 
+
+
+
+ |  TAG: | rippers (1)
+
+ 142781543400  rippers save files in a subfolder with a config that will allow me to run "H rip all 
+
+
+
+ |  TAG: | ruby (8)
+
+ 142903954900  #bea #work #ruby #rails add an API subclass to Snippet (lib/snippet.rb) -- could be  
+
+ 142909913600  create a StatusObject class based on the data in a database table #todo #code #ruby  
+
+ 142768090400  extract cars/lib/*_status.rb into something like hero-docs/rails/patterns/status_ids 
+
+ 143018649700  #hero #notes #research #todo #ruby 2-way encryption so that notes can be encrypted e 
+
+ 142785774100  #research how to make a self-contained executable ruby script #todo #google #ruby #h 
+
+ 142760646100  #try reading stdin that comes from another ruby script using a lessthan file redirec 
+
+ 142760684700  #try writing an #experiment where the text that is puts(ed) is obviously different d 
+
+ 143081303400  #todo #research the State Machine design pattern, is it similar to the values object 
+
+
+
+ |  TAG: | run (1)
+
+ 142898986300  #hero #notes make new methods for Runner so that #run does not automatically populat 
+
+
+
+ |  TAG: | scratch (1)
+
+ 142942779400  #bea converting assoc for loc/services to has_many :through #todo #scratch           
+
+
+
+ |  TAG: | shell (1)
+
+ 142714881400  #todo find  #reddit subreddits for #shell #command-line #bash or #zsh #productivity  
+
+
+
+ |  TAG: | standup (1)
+
+ 142963079800  #standup rough draft for apr 21st 2015 #bea #work                                    
+
+
+
+ |  TAG: | superhero (2)
+
+ 142787667700  consider namespacing superhero extensions with "sh-" as in "sh-notes" #superhero #H  
+
+ 142787646500  #EPIC #superhero github repo and spin-off add-on repos, tagline: "give your shell su 
+
+
+
+ |  TAG: | tags (1)
+
+ 142781636000  #refactor tags to use config files for all tagged items #hero #tags #todo            
+
+
+
+ |  TAG: | task (1)
+
+ 142913400600  eliminate the old loc/serv join table in favor of has_many through :locations_servic 
+
+
+
+ |  TAG: | tasks (2)
+
+ 142909913601  tasks and notes for week of April 13th #bea #todo #tasks #planning                   
+
+ 142917378301  #todo for #bea tonight -- #urgent #tasks #planning                                   
+
+
+
+ |  TAG: | template (1)
+
+ 142863326700  #hero #template #todo #tools for bin/accepts-3rd-party-subcommands which is just lik 
+
+
+
+ |  TAG: | timestamp/1428885324 (1)
+
+ 142888546001  #todo create a new, special notation for #hero #notes that creates reminders and not 
+
+
+
+ |  TAG: | tip (1)
+
+ 142938842500  #todo #vim #tip to refactor an extracted method, use these highlights to identify lo 
+
+
+
+ |  TAG: | todo (94)
+
+ 142912253000  add git subcommand for #notes that just passes the rest of the args to git, but sinc 
+
+ 142743021100  approach hero training/hero docs more like a narrative of how i work on a project or 
+
+ 142942779400  #bea converting assoc for loc/services to has_many :through #todo #scratch           
+
+ 142861893300  #bea #work #todo #research what does the x-content-type-options http header do - esp 
+
+ 142837870500  change how rip_{audio,video,playlist,etc.} work to use vim when choosing playlists t 
+
+ 142898828800  create a micro-document format (whatever haml is to html, sass to css, etc.) for qui 
+
+ 142835787200  create an h-ssh #herocmd plugin with templates for the project file and add .ssh/con 
+
+ 142742978900  create a mapping for `:.!note save` and `:'<,'>!note save` #notes #todo #vim #hero   
+
+ 142837859500  change the #notes list subcommand to group stories by tag, so it looks something lik 
+
+ 142722862000  convert def into a bin/ and use it to source files too, creating an index of aliases 
+
+ 142909913600  create a StatusObject class based on the data in a database table #todo #code #ruby  
+
+ 142742247400  change the note file ext to .hdoc and .shdoc for encrypted/secure notes/tasks (see d 
+
+ 142743113900  designate a specific delimiter for importing a single file but splitting it into mul 
+
+ 142728579200  #EPIC bin/H index - generating a file index for a project including syntax highlight 
+
+ 142768090400  extract cars/lib/*_status.rb into something like hero-docs/rails/patterns/status_ids 
+
+ 142730380000  #EPIC create a new github project called anyproject #todo #projects                  
+
+ 142751635400  experiment with multi-line formatting for each note when listing (see Transmission,  
+
+ 142741841000  expand on the idea of a project file.  allow custom generators #hero #todo #projectf 
+
+ 142742399600  #EPIC setup bin/H with all the known subcommands: project, note, etc #todo #tools #h 
+
+ 142765131700  #EPIC Cars Planning                                                                  
+
+ 142786147700  #EPIC start another tech blog hosted @ blog.unixsuperhero.com #todo #hero #unixsuper 
+
+ 142787646500  #EPIC #superhero github repo and spin-off add-on repos, tagline: "give your shell su 
+
+ 142723640200  either create files with unix line endings or parse them so non-unix do not break fo 
+
+ 142917378302  fix #vim status to always show if a file is dirty #todo                              
+
+ 142742252900  #google bitbucket command-line tools #todo #google #research                         
+
+ 142896216800  #hero #notes #todo add syntax for comments - lines ignored, not parsed or saved, by  
+
+ 143018649700  #hero #notes #research #todo #ruby 2-way encryption so that notes can be encrypted e 
+
+ 142835815400  #h-ssh subcommands for doing all of the following ssh-related actions #hero #herocmd 
+
+ 142863326700  #hero #template #todo #tools for bin/accepts-3rd-party-subcommands which is just lik 
+
+ 143018741200  #hero #pages #todo write something akin to the ruby koans (terse - effectively conci 
+
+ 143086605300  #hero #hcmd #todo the project subcommand should have common, but official documents  
+
+ 142751663600  if project dir has .git try using git ls-files to comply with .gitignore #hero #H #t 
+
+ 142853692500  #idea online banking as more of a money management app #todo #projects               
+
+ 142742919400  include note details (output of 'note list') in the project-index file #notes #todo  
+
+ 142903400000  instead of using tbg to copy the user/pass to the clipboard - use js to set the valu 
+
+ 142957256500  make a list and convert connect's popup-related ajax calls to jquery and let rails b 
+
+ 142729231300  make sure pwd is correct before auto-saving #notes #todo #hero                       
+
+ 142899295900  make a vim mapping for running `note import` in a bg tmux window #hero #notes #todo  
+
+ 142743053600  make a note subcommand for just printing the next available filename to use wih a vi 
+
+ 142851344700  new #hcmd subcommand rip/dl for accessing all my rippers like rip_video, manga{here, 
+
+ 142752059500  new subcmd: example that opens a demo note using most of the document format's featu 
+
+ 142845144200  #notes #todo think about using some kind of @category notation for namespacing all t 
+
+ 142928024300  #notes subcommand that automatically tags the notes as incomplete, partial, or fragm 
+
+ 142741935000  note subcommand to just print an index instead of opening it in vim #notes #todo #he 
+
+ 142741982000  open lib/clitasks/commands.rb when using the note -e subcommand #notes #todo #hero   
+
+ 142723710300  pick a new file extension for notes, they aren't ruby files anymore #notes #todo #he 
+
+ 142781543400  rippers save files in a subfolder with a config that will allow me to run "H rip all 
+
+ 142785774100  #research how to make a self-contained executable ruby script #todo #google #ruby #h 
+
+ 142781636000  #refactor tags to use config files for all tagged items #hero #tags #todo            
+
+ 142742973400  re-namespace hero notes from clitasks to hero/note(s) and move into the project with 
+
+ 142721780001  #research how to use the yankring vim plugin #vim #todo                              
+
+ 142760833100  reorganize the hnotes repo in a way that it can be executed (unix-style) by the H co 
+
+ 142965755400  separate all the js files in connect/firefox/* into 1 file per big object or logical 
+
+ 142928011600  setup 2 rebuild subcommands (or 1 cmd with options) one that blocks and one that reb 
+
+ 142965764000  start splitting bin/note into separate commands starting with the easiest stuff: not 
+
+ 142781646000  setup a pre-commit #git hook for #notes that does the following #todo #hero          
+
+ 142733300700  steal vim-fugitive's . mapping in gstatus to use with project files #todo #hero #env 
+
+ 142960255800  start extracting the popup html into haml views #bea #todo #jira #work               
+
+ 142751617200  show relative and abs note path for note list #notes #hero #todo                     
+
+ 142896203400  #todo #hero subcommand or commands as bookmarks/website shortcuts (e.g. H web bb # = 
+
+ 142896008800  #todo #hero #hcmd search for 3rd party subcommands from left-to-right until the firs 
+
+ 142896008900  #todo #hero #hcmd should have a method on the Base class for HeroCommandBase#subcomm 
+
+ 142895843600  #todo #hero subcommand for the bin subcommand that checks for the existence of the g 
+
+ 142888546001  #todo create a new, special notation for #hero #notes that creates reminders and not 
+
+ 142896242500  #todo #hero #hcmd HeroCommandBase should also have a method for aliased subcommands  
+
+ 142862278300  #todo #env #tools create a #bin with the sole purpose of making a horizontal split i 
+
+ 143081303400  #todo #research the State Machine design pattern, is it similar to the values object 
+
+ 143061657300  #todo #hero #notes should use tempfiles with more descriptive names (notes-import, n 
+
+ 142851344703  #todo setup an `experiment` #hcmd subcommand for creating a new experiment file.  us 
+
+ 142909913601  tasks and notes for week of April 13th #bea #todo #tasks #planning                   
+
+ 142741962000  the project file for note's -e cmd should not be a tempfile #notes #hero #todo       
+
+ 143054478000  #todo find any files in ~/dl/anime that are in more than 1 folder and delete duplica 
+
+ 142917378300  #todo add priorities to #notes #hero                                                 
+
+ 142917378301  #todo for #bea tonight -- #urgent #tasks #planning                                   
+
+ 142851344702  #todo setup either a `new` #hcmd subcommand or `template` subcommand for working on  
+
+ 142917378303  #try having 2 directories for the same repo, but share a .git/refs folder (symlink)  
+
+ 142851344701  #try `$stdout.puts($stdin.read)` when passing std i/o from from one #hcmd to another 
+
+ 142851117900  #todo #hero #hcmd 3rd party subcommands only need 1 level of namespacing (e.g. `h no 
+
+ 142837790700  #todo add a tag subcommand for #hero #notes to do many things -- see description for 
+
+ 142938842500  #todo #vim #tip to refactor an extracted method, use these highlights to identify lo 
+
+ 142733395600  testing my chdir/editbin changes to bin/note #todo #try #hero                        
+
+ 143085680200  #todo for hero.dev/google - create multiple iframes preloaded with the top links, se 
+
+ 142785379700  test pandoc markdown syntax (definition lists, etc.) based on the docs below #try #n 
+
+ 142835651700  #todo #research using a #git config to push to multiple remotes (but different desti 
+
+ 142790664800  #todo #hero #tools #research ruby cli options for specifying extra lib dirs when run 
+
+ 142714881400  #todo find  #reddit subreddits for #shell #command-line #bash or #zsh #productivity  
+
+ 142741988400  use system() instead of backticks to git commit to reduce output just use the return 
+
+ 142837788700  use git hooks to create a search index for #hero #notes #todo                        
+
+ 142975356200  #vim map to search for next conflict marker #todo                                    
+
+ 142914709000  #vim #todo write command abbrevs for jumping to the next #git conflict marker        
+
+ 142923403502  #vim #mapping to turn the word under the cursor (<cword>) into a hashtag #todo       
+
+ 142861884800  #work #bea #todo #research content-security-policy headers that facebook uses to res 
+
+ 142956177500  write scripts to update dev/staging after merging into master (details below) #todo  
+
+ 142742334600  when a project file is generated, add it's absolute path a "projects" file in the ho 
+
+
+
+ |  TAG: | tools (13)
+
+ 142722862000  convert def into a bin/ and use it to source files too, creating an index of aliases 
+
+ 142898828800  create a micro-document format (whatever haml is to html, sass to css, etc.) for qui 
+
+ 142729194000  create a tool for tagging a commit as having technical debt (format: debt-<pk>)      
+
+ 142837870500  change how rip_{audio,video,playlist,etc.} work to use vim when choosing playlists t 
+
+ 142728579200  #EPIC bin/H index - generating a file index for a project including syntax highlight 
+
+ 142742399600  #EPIC setup bin/H with all the known subcommands: project, note, etc #todo #tools #h 
+
+ 142923403505  #hero #tools #index #ref #official list of #hero #tools                              
+
+ 142923403505  #hero #tools #index #ref #official list of #hero #tools                              
+
+ 142863326700  #hero #template #todo #tools for bin/accepts-3rd-party-subcommands which is just lik 
+
+ 142781543400  rippers save files in a subfolder with a config that will allow me to run "H rip all 
+
+ 142862278300  #todo #env #tools create a #bin with the sole purpose of making a horizontal split i 
+
+ 142790664800  #todo #hero #tools #research ruby cli options for specifying extra lib dirs when run 
+
+ 142956177500  write scripts to update dev/staging after merging into master (details below) #todo  
+
+
+
+ |  TAG: | try (11)
+
+ 142923403503  #research how fasd or prezto can `cd` from a script and stay there #try experiments  
+
+ 142851344701  #try `$stdout.puts($stdin.read)` when passing std i/o from from one #hcmd to another 
+
+ 142760646100  #try reading stdin that comes from another ruby script using a lessthan file redirec 
+
+ 142760684700  #try writing an #experiment where the text that is puts(ed) is obviously different d 
+
+ 142785379700  test pandoc markdown syntax (definition lists, etc.) based on the docs below #try #n 
+
+ 142733395600  testing my chdir/editbin changes to bin/note #todo #try #hero                        
+
+ 142857836200  #try coming up with a system that exposes a cmds private api to a 3rd party extensio 
+
+ 142895158500  #try #javascript #js experimenting with which values and data types respond to the l 
+
+ 142917378303  #try having 2 directories for the same repo, but share a .git/refs folder (symlink)  
+
+ 142728658500  #try checking STDOUT.tty? in #notes for cmds like index to see if output is          
+
+ 143061664400  #try using backslashes in a tempfile's prefix to see if it creates the tempfile in a 
+
+
+
+ |  TAG: | tuesdays (1)
+
+ 142888546001  #todo create a new, special notation for #hero #notes that creates reminders and not 
+
+
+
+ |  TAG: | unixsuperhero.com (1)
+
+ 142786147700  #EPIC start another tech blog hosted @ blog.unixsuperhero.com #todo #hero #unixsuper 
+
+
+
+ |  TAG: | urgent (1)
+
+ 142917378301  #todo for #bea tonight -- #urgent #tasks #planning                                   
+
+
+
+ |  TAG: | user_id (1)
+
+ 142765131700  #EPIC Cars Planning                                                                  
+
+
+
+ |  TAG: | vim (15)
+
+ 142899218400  change #hero #notes <leader>hns key mapping in #vim so that it writes the lines to a 
+
+ 142742978900  create a mapping for `:.!note save` and `:'<,'>!note save` #notes #todo #vim #hero   
+
+ 142917378302  fix #vim status to always show if a file is dirty #todo                              
+
+ 142899295900  make a vim mapping for running `note import` in a bg tmux window #hero #notes #todo  
+
+ 142743053600  make a note subcommand for just printing the next available filename to use wih a vi 
+
+ 142721780001  #research how to use the yankring vim plugin #vim #todo                              
+
+ 142923403501  #research keeping a #vim split at a fixed size and position                          
+
+ 142923403507  try making a #vim #mapping that only needs a timestamp to find the note file #hero # 
+
+ 142938842500  #todo #vim #tip to refactor an extracted method, use these highlights to identify lo 
+
+ 142923403508  try making a #vim #mapping to create buffer windows with similar notes, (misc. purpo 
+
+ 142914709000  #vim #todo write command abbrevs for jumping to the next #git conflict marker        
+
+ 142923403502  #vim #mapping to turn the word under the cursor (<cword>) into a hashtag #todo       
+
+ 142928050700  #vim mapping that creates a :vs with the new note file created from the note under t 
+
+ 142888546000  #vim command abbreviations to open new note (`:notethis`) splits                     
+
+ 142975356200  #vim map to search for next conflict marker #todo                                    
+
+
+
+ |  TAG: | web (1)
+
+ 143085680200  #todo for hero.dev/google - create multiple iframes preloaded with the top links, se 
+
+
+
+ |  TAG: | work (12)
+
+ 142860748000  #accounts #work #bea production users. email => josh+{vendor,admin}@getbeautified.co 
+
+ 142965808700  #bea #connect #work #branches #branchlist feature/connect-ajax-and-views for refacto 
+
+ 142861893300  #bea #work #todo #research what does the x-content-type-options http header do - esp 
+
+ 142895015800  #bea #work #connect ideas for mitigating connect bugs                                
+
+ 142903954900  #bea #work #ruby #rails add an API subclass to Snippet (lib/snippet.rb) -- could be  
+
+ 142802858400  connect is not saving offers or appointments for mindbody.  - check algorithm flow ( 
+
+ 142765131700  #EPIC Cars Planning                                                                  
+
+ 142965755400  separate all the js files in connect/firefox/* into 1 file per big object or logical 
+
+ 142963079800  #standup rough draft for apr 21st 2015 #bea #work                                    
+
+ 142960255800  start extracting the popup html into haml views #bea #todo #jira #work               
+
+ 142956177500  write scripts to update dev/staging after merging into master (details below) #todo  
+
+ 142861884800  #work #bea #todo #research content-security-policy headers that facebook uses to res 
+
+
+
+ |  TAG: | workflow (1)
+
+ 142956177500  write scripts to update dev/staging after merging into master (details below) #todo  
+
+
+
+ |  TAG: | yume (2)
+
+ 142913400600  eliminate the old loc/serv join table in favor of has_many through :locations_servic 
+
+ 142965755400  separate all the js files in connect/firefox/* into 1 file per big object or logical 
+
+
+
+ |  TAG: | zsh (1)
+
+ 142714881400  #todo find  #reddit subreddits for #shell #command-line #bash or #zsh #productivity  
+
+
+
+------
+
+clitasks.gemspec
+Gemfile
+Gemfile.lock
+LICENSE
+project-index
+Rakefile
+README.md
+
+--------------
+ TAG: bin (2)
+--------------
+
+bin/note
+bin/task
+
+--------------
+ TAG: doc (5)
+--------------
+
+doc/docformattest.hero
+doc/fulcrum-features.pdf
+doc/kanban - agile methodology.pdf
+doc/web-based-competitors
+doc/write-your-own-gemspec.pdf
+
+-------------------
+ TAG: examples (1)
+-------------------
+
+examples/new_format_unencrypted.hdoc
+
+---------------
+ TAG: lib (21)
+---------------
+
+lib/clitasks.rb
+
+------------------------
+ TAG: lib/clitasks (15)
+------------------------
+
+lib/clitasks/commands.rb
+lib/clitasks/configuration.rb
+lib/clitasks/index.rb
+lib/clitasks/link_builder.rb
+lib/clitasks/note.rb
+lib/clitasks/note_io.rb
+lib/clitasks/project_file.rb
+lib/clitasks/runner.rb
+lib/clitasks/simple_dsl.rb
+lib/clitasks/split_on_unescaped.rb
+lib/clitasks/story.rb
+lib/clitasks/story_reader.rb
+lib/clitasks/version.rb
+lib/clitasks/viewer.rb
+lib/clitasks/world.rb
+
+----------------
+ TAG: notes (0)
+----------------
+
+
+-------------
+ TAG: pv (0)
+-------------
+
+
+----------------
+ TAG: test (19)
+----------------
+
+test/test_helper.rb
+
+---------------------
+ TAG: test/unit (13)
+---------------------
+
+test/unit/link_builder_test.rb
+
+------------------------
+ TAG: test/unit/lib (7)
+------------------------
+
+
+---------------------------------
+ TAG: test/unit/lib/clitasks (2)
+---------------------------------
+
+test/unit/lib/clitasks/story_test.rb
+test/unit/lib/clitasks/version_test.rb
+
+--------------
+ TAG: tmp (5)
+--------------
+
+tmp/merge-newer-commits.sh
+tmp/notes-index
+tmp/teeoutput.log
+tmp/testing
+tmp/ttest
+
+---------------------
+ TAG: vim-notes (18)
+---------------------
+
+
+-----------------------------
+ TAG: vim-notes/ftdetect (1)
+-----------------------------
+
+vim-notes/ftdetect/notes.vim
+
+-----------------------------
+ TAG: vim-notes/ftplugin (1)
+-----------------------------
+
+vim-notes/ftplugin/notes.vim
+
+---------------------------
+ TAG: vim-notes/syntax (1)
+---------------------------
+
+vim-notes/syntax/notes.vim
+
+
