@@ -21,9 +21,9 @@ module CliTasks
           tag = tag.to_s
           current_tag = index['tags'].fetch(tag, [])
           index['tags'].merge!(tag => current_tag)
-          if (downtag = tag.downcase.to_s) != tag
+          if (downtag = tag.to_s.downcase) != tag
             current_tag = index['tags'].fetch(downtag, [])
-            current_tag << story
+            current_tag << story.id
             index['tags'].merge!(downtag => current_tag)
           end
         end

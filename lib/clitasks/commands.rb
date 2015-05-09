@@ -23,7 +23,7 @@ module CliTasks
       end
 
       def reindex
-        Index.update
+        Runner.run!
       end
 
       def backup
