@@ -47,6 +47,14 @@ module CliTasks
       link story, dest
     end
 
+    def create_tag_link(type, dir, story)
+      type = sanitize(type.dup) if type
+      dir = sanitize_tag(dir.to_s.dup) || return
+      dir = File.join(type, dir) if type
+      dest = File.join(@path, dir)
+      link story, dest
+    end
+
     def by_metadata
       world.stories.each do |story|
         story.metadata.each do |k,v|
@@ -65,7 +73,7 @@ module CliTasks
     def by_tag
       world.stories.each do |story|
         story.tags.each do |tag|
-          create_link(nil, tag, story)
+          create_tag_link(nil, tag, story)
           # create_link('all', tag, story)
         end
       end
@@ -108,6 +116,11 @@ module CliTasks
     def sanitize(name)
       return unless name.is_a?(String) || name.is_a?(Symbol)
       String(name.to_s.dup).gsub(/(\W|_)+/, '_').sub(/^_*/, '').sub(/_*$/, '')
+    end
+
+    def sanitize_tag(name)
+      return unless name.is_a?(String) || name.is_a?(Symbol)
+      String(name.to_s.dup).gsub(/([^\w\/]|_)+/, '_').sub(/^_*/, '').sub(/_*$/, '')
     end
 
     def link(story, dest)
