@@ -106,7 +106,7 @@ module Hero
       when 'rebuild'
         CliTasks::Commands.rebuild
       when 'temp', 'scratch'
-        CliTasks::Commands.scratch
+        CliTasks::Commands.safe_scratch
         CliTasks::Commands.rebuild
       when 'edit'
         CliTasks::Commands.edit *args

@@ -41,6 +41,12 @@ module CliTasks
         ed[/^\s*vim\s*$/] ? 'vim -O' : ed
       end
 
+      def safe_scratch
+        f = next_tempfile
+        open_in_editor! f
+        File.unlink(f)
+      end
+
       def scratch
         f = Tempfile.new('tasks')
         open_in_editor! f.path
@@ -103,6 +109,12 @@ module CliTasks
         end
       end
 
+      def next_tempfile(counter=0)
+        FileUtils.mkdir_p(world.temp_path) unless File.exist?(world.temp_path)
+        filename = '%s/%s%02d.hdoc' % [world.temp_path, Time.now.to_i, counter]
+        File.exist?(filename) ? next_filename(counter + 1) : filename
+      end
+
       def next_filename(counter=0)
         filename = '%s/%s%02d.hdoc' % [world.task_path, Time.now.to_i, counter]
         File.exist?(filename) ? next_filename(counter + 1) : filename
@@ -159,9 +171,9 @@ module CliTasks
         notes += Note.split NoteIO.read_stdin(stdin)
         collected = notes.flatten.compact
         if collected.count == 0
-          f = Tempfile.new('tasks')
-          system sprintf("%s %s", editor, f.path)
-          collected = Note.split NoteIO.read_file(f.path)
+          f = next_tempfile
+          system sprintf("%s %s", editor, f)
+          collected = Note.split NoteIO.read_file(f)
         end
         collected
       end
