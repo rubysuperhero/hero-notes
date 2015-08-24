@@ -184,5 +184,6 @@ end
 # command = ARGV.shift || 'list'
 
 Hero::NoteCommand.run
+CliTasks::Commands.rebuild
 
 # vim: ft=ruby
