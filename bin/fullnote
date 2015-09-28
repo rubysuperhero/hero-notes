@@ -894,6 +894,26 @@ end
 #p = HeroParser.new ARGV.first || $stdin
 #ap [:@name, :@metadata, :@tags, :@body].map{|x| p.instance_variable_get(x) }, raw: true, index: false
 
+# FILE: /Users/macbookpro/repos/hnotes/lib/clitasks/note_io.rb
+# -----------------------------------------------------------------
+module CliTasks
+  # module IO
+  module NoteIO
+    extend self
+
+    def read_file(filename)
+      return filename unless File.exist?(filename)
+      return filename if File.directory?(filename)
+      IO.read filename
+    end
+
+    def read_stdin(io=$stdin)
+      return nil if io.tty?
+      io.read
+    end
+  end
+end
+
 # FILE: /Users/macbookpro/repos/hnotes/lib/clitasks/project_file.rb
 # -----------------------------------------------------------------
 
@@ -1436,6 +1456,14 @@ module Hero
       CliTasks.world.use_index = args.shift == '-i' if args.first == '-i'
 
       case command
+      when 'open'
+        if args.count > 3
+          system('vim', *args)
+        else
+          system('vim', '-O', *args)
+        end
+        CliTasks::Commands.rebuild
+        return
       when 'next_filename', 'next'
         puts CliTasks::Commands.next_filename
         return
