@@ -33,6 +33,10 @@ module CliTasks
       '%s/.index' % path
     end
 
+    def temp_path
+      '%s/tempfiles' % task_path
+    end
+
     def path
       @path ||= config.path
     end

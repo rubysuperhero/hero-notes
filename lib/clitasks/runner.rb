@@ -23,8 +23,10 @@ module CliTasks
           status_path = File.join(world.task_path, note.metadata['status'])
           new_file = File.join(status_path, File.basename(file))
           FileUtils.mkdir_p(status_path)
-          FileUtils.cp(file, new_file)
-          FileUtils.rm(file)
+          unless file == new_file
+            FileUtils.cp(file, new_file)
+            FileUtils.rm(file)
+          end
           file = new_file
           hide_note = true if note_status == 'finished'
         end

@@ -51,9 +51,9 @@ module CliTasks
         [
           '',
           format(" |  TAG: | %s (%d)\n", group, grouped_stories.count),
-          lines.join(separator),
+          lines, #.join(separator),
           '',
-        ].join(outer_separator)
+        ] #.join(outer_separator)
       end
     end
 
@@ -101,11 +101,27 @@ module CliTasks
       self.class.outer_separator
     end
 
+    def simple_story(s)
+      self.class.simple_story(s)
+    end
+
+    def self.simple_story(s)
+      # make a method for each of the _col methods
+      #status_col = wrap_in_column(s.status, 10)
+      #id_col = wrap_in_column(s.id, 20)
+      #points_col = wrap_in_column(?* * s.points.to_i, 6)
+
+      name_width = (ENV['COLUMNS'] || 100).to_i - (13 + 1 + 1 + 1)  # with of id plus spaces between columns
+      format(" %-13s %-#{name_width}s \n", s.id, s.name.slice(0,name_width))
+    end
+
     def story(s)
+      return simple_story(s)
       self.class.story(s)
     end
 
     def self.story(s)
+      return simple_story(s)
       # make a method for each of the _col methods
       #status_col = wrap_in_column(s.status, 10)
       #id_col = wrap_in_column(s.id, 20)
@@ -130,7 +146,11 @@ module CliTasks
     end
 
     def stories
-      @stories ||= CliTasks.world.stories
+      @stories ||= world.stories
+    end
+
+    def world
+      CliTasks.world
     end
   end
 end

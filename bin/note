@@ -80,7 +80,7 @@ module Hero
       CliTasks.world.use_index = args.shift == '-i' if args.first == '-i'
 
       case command
-      when 'next_filename'
+      when 'next_filename', 'next'
         puts CliTasks::Commands.next_filename
         return
       when 'index'
@@ -104,6 +104,9 @@ module Hero
       when 'reindex'
         CliTasks::Commands.reindex
       when 'rebuild'
+        CliTasks::Commands.rebuild
+      when 'temp', 'scratch'
+        CliTasks::Commands.safe_scratch
         CliTasks::Commands.rebuild
       when 'edit'
         CliTasks::Commands.edit *args
@@ -181,5 +184,6 @@ end
 # command = ARGV.shift || 'list'
 
 Hero::NoteCommand.run
+CliTasks::Commands.rebuild
 
 # vim: ft=ruby
