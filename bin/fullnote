@@ -192,7 +192,7 @@ module CliTasks
     end
 
     def id
-      @id ||= File.basename(file).sub(/[.]s?hdoc$/, '')
+      @id ||= File.basename(file).sub(/[.]s?md$/, '')
     end
 
     def tags
@@ -300,7 +300,7 @@ module CliTasks
     def self.run(*files)
       return world.stories if (world.stories || []).any?
       ( files.any? ? files.flatten : [world.task_path].flatten ).flat_map{|file|
-        Dir[File.directory?(file) && [file,'/*.{s,}hdoc'].join || file]
+        Dir[File.directory?(file) && [file,'/*.{s,}md'].join || file]
       }.map{|file|
         begin
           note = Note.from_file(file)
@@ -725,7 +725,7 @@ module CliTasks
     end
 
     def id
-      @id ||= File.basename(file).sub(/[.]s?hdoc$/, '')
+      @id ||= File.basename(file).sub(/[.]s?md$/, '')
     end
 
     def extract_tags
@@ -838,7 +838,7 @@ module CliTasks
     end
 
     def id
-      @id ||= File.basename(file).sub(/[.]s?hdoc$/, '')
+      @id ||= File.basename(file).sub(/[.]s?md$/, '')
     end
 
     def extract_tags
@@ -1141,12 +1141,12 @@ module CliTasks
 
       def next_tempfile(counter=0)
         FileUtils.mkdir_p(world.temp_path) unless File.exist?(world.temp_path)
-        filename = '%s/%s%02d.hdoc' % [world.temp_path, Time.now.to_i, counter]
+        filename = '%s/%s%02d.md' % [world.temp_path, Time.now.to_i, counter]
         File.exist?(filename) ? next_filename(counter + 1) : filename
       end
 
       def next_filename(counter=0)
-        filename = '%s/%s%02d.hdoc' % [world.task_path, Time.now.to_i, counter]
+        filename = '%s/%s%02d.md' % [world.task_path, Time.now.to_i, counter]
         File.exist?(filename) ? next_filename(counter + 1) : filename
       end
 
