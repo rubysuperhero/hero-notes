@@ -3,12 +3,19 @@
 require 'awesome_print'
 
 require 'fileutils'
-require 'pry'
+# require 'pry'
 require 'pathname'
 require 'singleton'
 require 'yaml'
-require 'active_support'
-require 'active_support/core_ext'
+# require 'active_support'
+# require 'active_support/core_ext'
+
+class Hash
+  def with_indifferent_access
+    map{|k,v| { k.to_sym => v, k.to_s => v, k => v } }.inject(:merge)
+  end
+end
+
 
 # FILE: /Users/macbookpro/repos/hnotes/lib/clitasks/configuration.rb
 # ------------------------------------------------------------------
@@ -23,7 +30,7 @@ module CliTasks
     end
 
     def config
-      @config ||= defaults.merge(YAML.load_file(@file)) rescue defaults
+      @config ||= defaults.merge(YAML.load_file(@file).with_indifferent_access) rescue defaults
     end
 
     def path
@@ -252,7 +259,7 @@ module CliTasks
 
     def self.read
       yaml = IO.read index_file
-      data = YAML.load yaml
+      data = YAML.load(yaml).with_indifferent_access
     end
 
     def self.build
@@ -311,8 +318,6 @@ module CliTasks
         begin
           note = Note.from_file(file)
         rescue => e
-          ap file: file
-          binding.pry
           ap file: file
         end
         note_status = note.metadata['status']
