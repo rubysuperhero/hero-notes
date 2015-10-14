@@ -18,7 +18,7 @@ module CliTasks
     include Singleton
     attr_accessor :created_by
     def load(file=nil)
-      @file = file || '%s/.config.yml' % default_path
+      @file = file || '%s/.notes.yml' % ENV['HOME']
       @created_by = config[:created_by]
     end
 
@@ -27,7 +27,9 @@ module CliTasks
     end
 
     def path
-      config[:path]
+      config[:path].tap do |notes_path|
+        FileUtils.mkdir_p(notes_path) unless File.exist?(notes_path)
+      end
     end
 
     def default_path
@@ -38,7 +40,7 @@ module CliTasks
 
     def defaults
       {
-        path: '%s/hero/notes' % ENV['HOME'],
+        path: '%s/notes' % ENV['HOME'],
       }.with_indifferent_access
     end
   end
@@ -90,11 +92,15 @@ module CliTasks
     end
 
     def task_path
-      '%s/.index' % path
+      format('%s/.index', path).tap do |the_path|
+        FileUtils.mkdir_p(the_path) unless File.exist?(the_path)
+      end
     end
 
     def temp_path
-      '%s/tempfiles' % task_path
+      format('%s/tempfiles', task_path).tap do |the_path|
+        FileUtils.mkdir_p(the_path) unless File.exist?(the_path)
+      end
     end
 
     def path
@@ -467,6 +473,7 @@ module CliTasks
     end
 
     def append_index(story, dest)
+      dest += '.md'
       dir = File.dirname(dest)
       FileUtils.mkdir_p(File.expand_path(dir))
 
@@ -1052,6 +1059,8 @@ module CliTasks
   class Commands
     class << self
       def commit(message='auto-saving notes')
+        return unless system('git rev-parse --show-toplevel &>/dev/null')
+
         reindex
         if $stdout.tty?
           addall = %x{git add --all}
@@ -1077,6 +1086,8 @@ module CliTasks
       end
 
       def backup
+        return unless system('git rev-parse --show-toplevel &>/dev/null')
+
         %x{git push origin --all}
       end
 
@@ -1407,7 +1418,7 @@ module Hero
 
     def initialize(args=ARGV.clone, io=$stdin)
       @original_args = args.clone
-      @subcommand = args.shift || 'list'
+      @subcommand = args.shift
 
       @args = args
       @io = io
@@ -1422,7 +1433,7 @@ module Hero
     end
 
     def is_edit_bin_subcommand?
-      command[/--?e(d(i(t)?)?)?/] ? true : false
+      (command || '')[/--?e(d(i(t)?)?)?/] ? true : false
     end
 
     def edit_bin
@@ -1458,9 +1469,9 @@ module Hero
       case command
       when 'open'
         if args.count > 3
-          system('vim', *args)
+          system('vim', *args.map{|filename| format('%s.md', filename) })
         else
-          system('vim', '-O', *args)
+          system('vim', '-O', *args.map{|filename| format('%s.md', filename) })
         end
         CliTasks::Commands.rebuild
         return
@@ -1545,6 +1556,45 @@ module Hero
         return CliTasks::Commands.test args, $stdin
       when 'list'
         CliTasks::Commands.list *args
+
+      when '--help', 'help', '-?', '', nil
+        puts
+        puts '  USAGE:'
+        puts
+        puts '   note <subcommand>[ <options|filenames>]'
+        puts
+        puts '    [subcommand]'
+        puts '        [description]'
+        puts '  -----------------------------------------------------------'
+
+        {
+          ['open'] => "open a tag's index file",
+          ['next_filename', 'next'] => 'echo the next .index/<timestamp>.md filename',
+          ['index'] => 'write the "project" file and open it with vim or $EDITOR',
+          ['update_index'] => 'write the "project" file',
+          ['print_index'] => 'write the "project" file, and display it using stdout',
+          ['save', 's'] => 'collect the notes and write them to disk',
+          ['add', 'a', 'new', 'n', 'create', 'c', 'import', 'i'] => 'collect the notes and write them to disk',
+          ['reindex'] => 'reread all the notes and build the tag files, etc',
+          ['rebuild'] => 'write the index files based on the tag names',
+          ['temp', 'scratch'] => 'open a temporary note file',
+          ['edit'] => 'open/edit the index file in vim for the tag name passed in',
+          ['tags'] => 'list the notes tagged with each of the tags passed in',
+          ['search'] => 'filter all notes by each search term passed in and list the final results',
+          ['commit'] => 'commit all changes to the git repo',
+          ['backup'] => 'push latest commits to the remote branch tracking the notes repo',
+          ['tests'] => 'run hand-written tests to compare the speed of the different search methods',
+          ['test'] => 'test all the methods of collecting possible notes',
+          ['list'] => 'list all note timestamps and short descriptions',
+          ['help'] => 'display this message',
+        }.each do |subcommands,description|
+          puts format('    %s', subcommands.join(' | '))
+          description.scan(/(.{0,50}\S)(?:\s|$)/).flatten.each do |descr|
+            puts format('%7s %s', '', descr)
+          end
+          puts
+        end
+
       else
         CliTasks::Commands.list *original_args
       end
